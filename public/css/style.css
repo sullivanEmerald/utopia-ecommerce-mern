@@ -331,3 +331,11 @@ footer > section > *{
     font-size: 20px;
     
 }
+
+
+
+/* for the Review Nav */
+
+.reviewNav {
+    justify-content: flex-end;
+}
