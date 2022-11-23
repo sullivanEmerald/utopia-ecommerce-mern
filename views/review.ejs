@@ -1,0 +1,203 @@
+<%- include('./partials/homeHeader.ejs') %>
+
+<%- include('./partials/checkoutHeader.ejs') %>
+
+
+<main class="userAddress">
+    <section class="userAddressFirst">
+        <section class="flexSection">
+            <section class="addressSection">
+                <p>Shipping Address</p>
+                <section>
+                    <p class="users"><%= user.userName %></p>
+                    <p class="users"><%= user.email %></p>
+                    <p><%= address.address %></p>
+                    <p><%= address.phoneNo %></p>
+                    <p><%= address.landmark %></p>
+                </section>
+                <button type="button"  data-bs-toggle="modal" data-bs-target="#myModal">Edit Address</button>
+            </section>
+
+            <!-- DELIVERY METHOD -->
+            <section class="paymentMethod ">
+                <h2 class="text-center centeredHeaders">Delivery Method</h2>
+                <form action="/checkout/review/deliveryMethod/<%= address._id %>" method="POST">
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingInput" name="deliveryMethod">
+                            <option>Select Delivery Option</option>
+                            <option value="Pick Up Station">Pick Up Station</option>
+                            <option value="Pay On Delivery">Pay on Delivery</option>
+                            <option value="Credit Card">Credit Card</option>
+                        </select>
+                    </div>
+                    <button type="submit">ADD DELIVERY METHOD</button>
+                </form>
+                <% if(address.paymentMethod === 'Pay On Delivery' ) { %>
+                    <section>
+                        <h5> You have selected <span class="displayPayment"><%= address.paymentMethod %> </span>as you Preffered Delivery option</h5>
+                        <p>The Products you have ordered will to you after one week and if the Order is within Africa and North America, the delivering fee is free.</p>
+
+                        <p>Review your Information and acertain that they are very correct and the informtion associated with the Order will be Forwarded to you</p>
+
+                        <p>You Will make the necessary payment corresponding to the amount on the system. Make sure you sign on the agent slip that the product was highly untouched on arriving. Endeaour to open and check your products in the presence of your agent.</p>
+                    </section>
+                <% } else if(address.paymentMethod === 'Pick Up Station') { %>
+                    <section>
+                        <h5> You have selected <span class="displayPayment"><%= address.paymentMethod %> </span>as you Preffered Delivery option</h5><br>
+                        <form action="/checkout/review/station/<%= address._id %>" method="POST">
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="floatingInput" name="pickStation">
+                                    <option>Select Location Nearest to You</option>
+                                    <option value="Africa">Africa</option>
+                                    <option value="North America">North America</option>
+                                    <option value="England">England</option>
+                                    <option value="Europe">Europe</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Asia">Asia</option>
+                                </select>
+                            </div>
+                            <button type="submit">Submit Location</button>
+                        </form>
+                        <p>Plese be informed that at this early stage of our company you can select your location base on Continient and our heads in each will call you and or email you how it will be brought closer to you in your country and state. Just follow instructions.</p>
+
+                        <p>it takes the pacel one week to get to your Continient and another week to get to your state. We are improving to serve you better</p>
+
+                        <p>You Will make the necessary payment corresponding to the amount on the system. Make sure you sign on the agent slip that the product was highly untouched on arriving. Endeaour to open and check your products in the presence of your agent.</p>
+                    </section>
+
+                <% } else { %>
+                    <img src="/images/creditCard.png" data-bs-toggle="modal" data-bs-target="#creditCard" alt="Credit Card">
+                <% } %>
+            </section>
+
+            <!-- summary section -->
+            <section class="shippingSummary">
+                <h4 class="text-center centeredHeaders">Shipping Summary</h4>
+                <p>NAME :  <%= user.userName %></p>
+                <p>ADDRESS :  <%= address.address %></p>
+                <p>PHONE NUMBER : <%= address.phoneNo %></p>
+                <% if(address.paymentMethod === 'Pick Up Station' ) { %>
+                <address>PICK UP STATION :  <%= address.pickUp %> </address> 
+                <% } else { %>
+                <address>DELIVERY METHOD :  <%= address.paymentMethod %></address>
+                <% } %>
+        </section>
+
+        
+
+        </section>
+
+        <section class="orderSection">
+            <h3 class="text-center">Order Summary</h3>
+            <hr>
+            <% for(let i = 0; i < orders.length; i++) { %>
+                <section class="orderSummaryItem">
+                    <img src="<%= orders[i].productImage %>" alt="ProductImage">
+                    <section>
+                        <p><%= orders[i].productName %></p>
+                        <p>&dollar; <%= orders[i].productPrice %></p>
+                        <p> Qty : <%= orders[i].quantity %></p>
+                    </section>
+                </section>
+            <% } %>
+            
+        </section>
+    </section>
+    
+</main>
+
+
+<!-- MODAL FOR UPDATING ADDRESS -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title"><p class="text-danger">Edit Address</p></h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+            <main class="container">
+                <div class="row justify-content-center">
+                    <section class="col-6 mt-5">
+                        <% if (locals.messages.errors) { %>
+                            <% messages.errors.forEach( el => { %>
+                                <div class="alert alert-danger"><%= el.msg %></div>
+                            <% }) %>    
+                        <% } %>
+                        <% if (locals.messages.info) { %>
+                            <% messages.info.forEach( el => { %>
+                                <div class="alert alert-info"><%= el.msg %></div>
+                            <% }) %>    
+                        <% } %>
+            
+                        <form action="/checkout/review/edit/<%= address._id%>" method="POST">
+                              <div class="form-floating mb-3">
+                                <textarea name="address" id="diaryBody" cols="30" rows="10" class="form-control" placeholder="Address">
+                                    <%= address.address %>
+                                </textarea>
+                                <label for="diaryBody">Address of the User</label>
+                              </div>
+            
+                              <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="Phone Number" name="phoneNumber" value="<%= address.phoneNo %>">
+                                <label for="floatingInput">Phone Number</label>
+                              </div>
+            
+                              <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="Land Mark" name="landMark" value="<%= address.landmark %>">
+                                <label for="floatingInput">LandMark</label>
+                              </div>
+            
+            
+                            <button type="submit" class="btn btn-outline-primary">Submit</button>
+                          </form>
+                    </section>
+                </div>
+            </main>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- MODAL FOR CREDIT CARD  -->
+
+  <div class="modal fade" id="creditCard">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title"><p class="text-info">Notification</p></h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>We the support team at Utopia is strongly sorry that this option is not available yet. We are working hard to activate our customers paying with credit card. PLease use Other Delivery Option and we will notify you when credit card option have been activated. Thank You</p>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+
+
+
+<%- include('./partials/userFooter.ejs') %>

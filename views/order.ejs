@@ -1,0 +1,88 @@
+<%- include('./partials/homeHeader.ejs') %>
+
+<%- include('./partials/loggedUser.ejs') %>
+
+<% if(Orders.length < 1) { %>
+
+    <section class="text-center">
+        <p>You don't have any Item on your Cart</p>
+        <a href="/">Start Shopping Now</a>
+    </section>
+
+<% } else { %>
+    <section class="orderPage">
+        <section class="orderData">     
+            <% function useComma(price) { %>
+                <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+            <% } %>
+
+          
+
+            <% let sum  = 0 %> 
+
+    <% Orders.forEach(item => { %>
+        
+        <!-- this is a function that creates a comma after three digits of numbers for the price of items -->
+        
+            <section class="orderItems">
+                <p><%= item.productName %></p>
+                <section class="orderItemsFlex">
+                    <img src="<%= item.productImage %>" alt="My Cart">
+                    <p><%= item.productDescription %></p>
+
+                    <!-- using method override to update the quality  -->
+                    <form action="/order/minus/<%= item._id %>?method=PUT" method="POST">
+                        <button type="submit"><i class="fa-solid fa-minus"></i></button>
+                    </form>
+
+                    <p><%= item.quantity %></p>
+
+                    <form action="/order/plus/<%= item._id %>?method=PUT" method="POST">
+                    <button><i class="fa-solid fa-plus"></i></button>
+                    </form>
+
+                    <% if(item.quantity <= 1 ) { %>
+                        <p>&dollar;<%= useComma(item.productPrice)  %></p>
+                    <% } else { %>
+                        <p>&dollar;<%= useComma(item.productPrice * item.quantity) %></p>
+                    <% } %>
+                    
+                    <% if(item.quantity <= 1) { %>
+                        <% sum += item.productPrice %>
+                    <% } else { %>
+                        <% sum += item.productPrice * item.quantity %>
+                    <% } %>
+
+                    <!-- <% item.quantity <= 1 ? sum += item.productPrice : sum  += item.productPrice * item.quantity %> -->
+                
+
+                </section>
+                <form action="/order/remove/<%= item._id %>?method=DELETE" method="POST">
+                    <button type="submit">REMOVE</button>
+                </form>
+                
+            </section>
+       
+    <% }) %>
+        </section>
+
+        <section class="sticky-top orderTotal">
+            <a class="checkOut" href="/order/checkout">Go to Check Out</a>
+            <p>items</p> <span>500000</span>
+            <span>Shipping</span> <p>Free</p>
+            
+            <span>Subtotal : </span> 
+            <p>&dollar;<%=useComma(sum) %></p> 
+            <p>
+               
+            </p>
+        </section>
+        
+
+<% } %>
+        </section>
+
+          
+
+
+<%- include('./partials/userFooter.ejs') %>

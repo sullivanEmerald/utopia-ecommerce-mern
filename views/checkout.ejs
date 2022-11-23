@@ -1,0 +1,49 @@
+<%- include('./partials/homeHeader.ejs') %>
+
+<%- include('./partials/checkoutHeader.ejs') %>
+
+<main class="container">
+    <div class="row justify-content-center">
+        <section class="col-6 mt-5">
+            <% if (locals.messages.errors) { %>
+                <% messages.errors.forEach( el => { %>
+                    <div class="alert alert-danger"><%= el.msg %></div>
+                <% }) %>    
+            <% } %>
+            <% if (locals.messages.info) { %>
+                <% messages.info.forEach( el => { %>
+                    <div class="alert alert-info"><%= el.msg %></div>
+                <% }) %>    
+            <% } %>
+
+
+            <h1 class="text-center address">Address Details</h1>
+
+            <p class="userInfo">User Name :  <%=  user.userName %></p>
+            <p class="userInfo">User Email :  <%=  user.email %></p>
+
+            <form action="/checkout/user/address" method="POST">
+                  <div class="form-floating mb-3">
+                    <textarea name="address" id="diaryBody" cols="30" rows="10" class="form-control" placeholder="Address"></textarea>
+                    <label for="diaryBody">Address of the User</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Phone Number" name="phoneNumber">
+                    <label for="floatingInput">Phone Number</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Land Mark" name="landMark">
+                    <label for="floatingInput">LandMark</label>
+                  </div>
+
+
+                <button type="submit" class="btn btn-outline-primary">Submit</button>
+              </form>
+        </section>
+    </div>
+</main>
+
+
+<%- include('./partials/userFooter.ejs') %>

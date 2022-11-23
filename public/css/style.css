@@ -1,0 +1,333 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.userImage{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px #00d084 solid;
+    margin: 5px 15px;
+
+}
+
+
+hr{
+    border: 3px solid #00d084;
+    width: 90%;
+    margin: 15px auto;
+    margin-top: 20px;
+    
+}
+
+footer > section, .homeLikes, .navbar-, .orderPage, .orderItemsFlex{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+footer > section > *{
+ margin-right: 30px; 
+}
+
+.homeLike{
+    justify-content: space-between;
+    
+}
+
+.homeLikes span{
+    font-size: 30px;
+    cursor: pointer;
+}
+
+
+.homePage img{
+    width: 300px;
+    height:300px;
+    margin-left: 20px;
+    padding-top: 20px;
+   
+}
+
+.homePage .homeCard{
+    margin: 20px;
+}
+
+
+.fa-cart-shopping{
+    font-size: 40px;
+    color: #00d084;
+    
+}
+
+.bg-danger{
+    transform: translateX(-100%) translateY(-120%);   
+}
+
+
+/* ORDER PAGE */
+
+.orderPage{
+    position: relative;
+}
+
+.orderPage  section.orderData {
+    width: 70%;
+    margin-right: 20px;
+}
+
+.orderItems{
+    margin: 20px;
+    width: 100%;  
+    /* border: 2px solid #0000FF;   */
+    box-shadow: 3px 3px 5px 6px #ccc;
+    padding: 20px;
+
+}
+
+
+.orderPage img{
+    height: 250px;
+    width: 250px;
+    border-radius: 10px;
+}
+
+.orderTotal{
+    box-sizing: border-box;
+    width: 20%;
+    margin-left: 30px;
+    margin-top: 20px;
+    
+}
+.orderItemsFlex *{
+    margin-right: 20px;
+}
+
+.orderItemsFlex button{
+    height: 50px;
+    border-radius: 10px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    width: 5%;
+    border: none;
+}
+
+/* Working On Nav Bar */
+
+.navbar-brand, .navbar-brand:hover{
+    font-weight: bold;
+    font-size: 30px;
+    /* color: #7bdcb5; */
+    color: #00d084;
+    font-family: 'Orbitron', sans-serif;
+
+}
+
+.navbar-nav {
+    margin: 10px auto;
+}
+
+.navbar-nav >  li > a{
+    color: black;
+    font-size: 20px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.navbar-nav >  li > a:hover{
+    color : #00d084;
+}
+
+.userName{
+    color: #19d68b;
+    font-size: 20px;
+    }
+.address{
+    color: #19d68b;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+
+
+/* Check Out Link */
+
+.checkOut{
+    display: inline-block;
+    background-color: #093d2a;
+    color: #00d084;
+    text-decoration: none;
+    text-align: center;
+    width: 90%;
+    padding: 15px;
+    border-radius: 20px;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+
+.userInfo{
+    color: #00af6f;
+    font-size: 20px;
+    display: inline-block;
+    background-color: #093d2a;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+
+/* REVIEW ROUTE STYLING */
+
+.userAddressFirst, .addressSection, .orderSummaryItem{
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+    position: relative;
+    
+}
+
+.orderSummaryItem{
+    justify-content: flex-start;
+}
+
+.flexSection{
+    width: 60%;
+    padding: 20px;
+    justify-content: space-between;
+    border-radius: 10px;
+    
+    
+}
+
+.orderSection{
+    width: 30%;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px 12px 17px 20px;
+    border: 2px solid gray;
+    box-shadow: 3px 3px 5px 6px #ccc
+    
+   
+
+}
+.orderSection>  h3{
+    color: #00d084;
+    text-shadow: 2px 2px #093d2a;
+    font-weight: bold;
+    
+}
+
+.orderSection hr{
+    border-width: 2px;
+    margin-top: -4px;
+}
+
+.orderSection img{
+    width: 30%;
+}
+
+
+.orderSection section{
+    border-bottom: 2px gray solid;
+    margin-bottom: 10px;
+}
+
+
+.addressSection > p {
+    display: inline-block;
+    background-color: #093d2a;
+    color: #19d68b;
+    height: 50px;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 10px;
+
+}
+
+.addressSection{
+    color: #19d68b ;
+    border: 2px solid #00d084;
+    border-radius: 10px;
+    padding: 15px;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.flexSection button{
+    height: 50px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    color: #19d68b;
+    font-size: 20px;
+    margin-top: -10px;
+    text-decoration: underline;
+}
+
+
+.users{
+    text-decoration: underline;
+}
+
+.users::first-letter{
+    text-transform: capitalize;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+
+
+/* PAYMENT METHOD STYLING */
+
+
+.paymentMethod{
+    border: 2px solid #00d084;
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.paymentMethod button{
+    text-decoration: none;
+    background-color: #093d2a;
+    color: #00d084;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+
+.displayPayment{
+    color: #00d084;
+    text-decoration: underline;
+}
+
+ section.paymentMethod > h2 + form + section{
+    margin-top: 10px;
+    padding: 10px;
+    text-align:justify;
+ }
+
+.centeredHeaders{
+    color: #00d084;
+    text-decoration: underline;
+    text-transform: capitalize;
+}
+
+.shippingSummary{
+    border: 2px solid #00d084;
+    border-radius: 10px;
+    margin-top: 30px;
+    padding: 10px;
+    color: blueviolet;
+    font-size: 18px;
+    
+}
+
+.shippingSummary address{
+    font-style: italic;
+    font-size: 20px;
+    
+}

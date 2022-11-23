@@ -1,0 +1,57 @@
+<%- include('./partials/homeHeader.ejs') %>
+
+
+<%- include('./partials/homeNav.ejs') %>
+
+
+ <main class="container">
+    <div class="row justify-content-center">
+        <section class="col-6 mt-5">
+            <% if (locals.messages.errors) { %>
+                <% messages.errors.forEach( el => { %>
+                    <div class="alert alert-danger"><%= el.msg %></div>
+                <% }) %>    
+            <% } %>
+            <% if (locals.messages.info) { %>
+                <% messages.info.forEach( el => { %>
+                    <div class="alert alert-info"><%= el.msg %></div>
+                <% }) %>    
+            <% } %>
+
+            <form action="/signup" method="POST" enctype="multipart/form-data">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Sullivan Amadike" name="userName">
+                    <label for="floatingInput">Fullname</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+                    <label for="floatingInput">Email address</label>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="imgUpload" class="form-label">Image</label>
+                    <input type="file" class="form-control" id="imageUpload" name="file">
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingInput" placeholder="qwerty12" name="password">
+                    <label for="floatingInput">Password</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingInput" placeholder="name@example.com" name="confirmPassword">
+                    <label for="floatingInput">Comfirm Password</label>
+                  </div>
+
+                <button type="submit" id="registerBtn">Submit</button>
+              </form>
+              <h6 class="redirect">Click <a href="/login" id="registerlink">here</a> to Login</h6>
+        </section>
+    </div>
+</main>
+
+
+
+<%- include('./partials/homeFooter.ejs') %>
+

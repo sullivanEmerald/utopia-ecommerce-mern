@@ -1,0 +1,82 @@
+<%- include('./partials/homeHeader.ejs') %>
+
+<% if  (user)  { %>
+
+<%- include('./partials/loggedUser.ejs') %>
+
+<% } else { %>
+ 
+  <%- include('./partials/homeNav.ejs') %>
+
+<% } %>
+
+
+
+      <main class="container-fluid homePage">
+          <div class="row">
+            <% for(let i = 0; i < products.length;  i++) { %>
+            <div class="col-md-4">
+              <div class="card homeCard" style="width:400px">
+                <img class="card-img-top" src="<%= products[i].productImage %>" alt="Card image">
+                <div class="card-body">
+                  <h4 class="card-title"><%= products[i].productName %></h4>
+                  <p class="card-text"><%= products[i].productDescription %></p>
+                  <p class="card-text">&#36;<%= products[i].productPrice %></p>
+                  <section class="homeLikes">
+                    <p class="card-text">Likes : <%= products[i].likes %></p>
+                    <form action="/editLike/<%= products[i]._id %>?method=PUT" method="POST">
+                      <button type="submit" class="btn btn-primary"><i class="fa-solid fa-thumbs-up"></i></span>
+                    </form>
+                  </section>
+                  <% if  (user)  { %>
+
+                    <form action="/addCart/<%= products[i]._id %>" method="POST">
+
+                      <button type="submit" class="btn btn-primary"><i class="fa-solid fa-circle-plus"></i></button>
+
+                    </form>
+                    
+                    <% } else { %>
+                     
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa-solid fa-circle-plus"></i></button>
+                    
+                    <% } %>
+                </div>
+              </div>
+            </div>
+            <% } %>
+          </div>
+      </main>
+
+
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title"><p class="text-danger">Warning!!!</p></h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+              <p>Alert!! You Must Be User To Start Adding to Cart....</p>
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+
+      
+
+<%- include('./partials/homeFooter.ejs') %>
+
+
+      
+      
