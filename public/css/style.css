@@ -205,10 +205,8 @@ footer > section > *{
     margin-top: 20px;
     padding: 10px;
     border-radius: 10px 12px 17px 20px;
-    border: 2px solid gray;
-    box-shadow: 3px 3px 5px 6px #ccc
-    
-   
+    box-shadow: 3px 3px 5px 6px #ccc;
+    position : relative;
 
 }
 .orderSection>  h3{
@@ -229,8 +227,18 @@ footer > section > *{
 
 
 .orderSection section{
-    border-bottom: 2px gray solid;
-    margin-bottom: 10px;
+    /* border-bottom: 1px gray solid; */
+    margin-bottom: 20px;
+    padding: 10px;
+  
+}
+
+.orderHr{
+    width: 80%;
+    border: 1px solid black;
+    border-width: 1px;
+    
+    
 }
 
 
@@ -339,3 +347,23 @@ footer > section > *{
 .reviewNav {
     justify-content: flex-end;
 }
+
+
+/* free gift notification */
+
+.userGift{
+    color: #00d084;
+    font-size: 20px;
+}
+
+.userSubtotal{
+    display: inline-block;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    position: relative;
+    left: 150px;
+    padding: 10px;
+    font-size: 20px;
+    color: rgb(10, 83, 218);
+}
+

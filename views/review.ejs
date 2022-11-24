@@ -2,6 +2,9 @@
 
 <%- include('./partials/confirmCheck.ejs') %>
 
+<% function useComma(price) { %>
+    <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
 
 <main class="userAddress">
     <section class="userAddressFirst">
@@ -88,20 +91,24 @@
         </section>
 
         <section class="orderSection">
-            <h3 class="text-center">Order Summary</h3>
+            <h3 class="text-center">Cart Summary</h3>
             <hr>
             <% for(let i = 0; i < orders.length; i++) { %>
                 <section class="orderSummaryItem">
                     <img src="<%= orders[i].productImage %>" alt="ProductImage">
                     <section>
                         <p><%= orders[i].productName %></p>
-                        <p>&dollar; <%= orders[i].productPrice %></p>
+                        <p>&dollar; <%=useComma(orders[i].productPrice) %></p>
                         <p> Qty : <%= orders[i].quantity %></p>
                     </section>
                 </section>
+                <hr class="orderHr">
             <% } %>
+
             <% const subtotal =  orders.map(item => item.quantity > 1 ? item.productPrice *= item.quantity : item.price).reduce((acc,c) => acc + c) %>
-            <p>Subtotal : <%=  subtotal %> </p>
+
+            <p class="text-center userSubtotal">Subtotal :  &dollar;<%=useComma(subtotal) %> </p>
+            <p class="userCongras">Congratulations, <span class="userGift"><%= user.userName %></span> you are on a free shipping</p>
         </section>
     </section>
     
