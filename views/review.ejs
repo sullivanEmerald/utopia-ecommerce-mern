@@ -100,7 +100,8 @@
                     </section>
                 </section>
             <% } %>
-            
+            <% const subtotal =  orders.map(item => item.quantity > 1 ? item.productPrice *= item.quantity : item.price).reduce((acc,c) => acc + c) %>
+            <p>Subtotal : <%=  subtotal %> </p>
         </section>
     </section>
     
