@@ -7,9 +7,7 @@ Router.get('/review/checkout', checkoutController.reviewAddress)
 Router.post('/review/edit/:id', checkoutController.editAddress)
 Router.post('/review/deliveryMethod/:id', checkoutController.addDeliveryMethod)
 Router.post('/review/station/:id', checkoutController.addPickStation)
-
-
-
+Router.get('/payment/review/:id', checkoutController.paymentReview)
 
 
 module.exports = Router

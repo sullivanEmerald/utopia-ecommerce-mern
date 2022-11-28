@@ -88,4 +88,13 @@ module.exports = {
         
     },
 
-}
+    paymentReview  : async (req, res) => {
+        try {
+            const pamentAmount = req.params.id
+            res.render('payment.ejs', { pamentAmount : pamentAmount, user : req.user , title : "Review Payment"})
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+}   
