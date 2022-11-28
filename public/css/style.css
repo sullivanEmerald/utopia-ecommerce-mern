@@ -388,3 +388,57 @@ footer > section > *{
    
     
 }
+
+
+/* Review Payment */
+
+.paymentSection {
+    background-color: rgb(230, 230, 230);
+    padding: 20px;
+}
+
+.paymentReview{
+    margin: 20px auto;
+    width: 50%;
+}
+
+.paymentReview > section{
+    background-color: white;
+    margin-bottom: 20px ;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+
+.paymentAside, .totalPay{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.discount{
+    display: inline-block;
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 35px;
+    padding: 5px;
+    font-size: 15px;
+    
+}
+
+.totalPay{
+    color: cornflowerblue;
+    font-weight: bold;
+}
+
+
+#payText{
+    font-weight: bold;
+    color: cornflowerblue;
+    
+}
+
+.payButton{
+    margin: 5px auto;
+    display: block;
+}

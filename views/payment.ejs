@@ -1,15 +1,62 @@
 <%- include('./partials/homeHeader.ejs') %>
 
 <%- include('./partials/confirmCheck.ejs') %>
+<% function useComma(price) { %>
+    <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
 
-<main class="paymentReview">
-    <p>Order Total : &dollar;<%= pamentAmount  %> </p>
-    <span>From Utopia store credit</span>
-    <p>Payment discount </p>
-    <hr>
-    <p>TOTAL TO PAY</p>
-</main>
+<% function sendMsg() { %>
+    <% setTimeout(() => { %>
+    <% console.log('sullivan') %>
+<% }, '1000') %>
 
+<% } %>
+
+<% sendMsg() %>
+
+<section class="paymentSection">
+    <div class="paymentReview">
+        <p>Order Summary</p>
+        <section>
+            <% const discount = 1200 %>
+            <% const utopiaDiscount = 1000 %>
+
+            <section  class="paymentAside">
+                <section>
+                    <p>Order Total : </p>
+                    <p>From Utopia store credit : </p>
+                    <p>Payment discount : </p>
+                </section>
+    
+                <section>
+                    <p>&dollar;<%= useComma(pamentAmount) %></p>
+                    <p>- &dollar; <%= useComma(1200) %></p>
+                    <p class="discount">Get discount of - &dollar; <%= useComma(utopiaDiscount) %></p>
+                </section>
+            </section>
+    
+            <% const totalPay = (pamentAmount - discount) - utopiaDiscount %>
+            <section class="totalPay">
+                <p>TOTAL TO PAY : </p> 
+                <span>&dollar; <%= useComma(totalPay) %></span>
+            </section>
+            
+        </section>
+    
+        <p id="payText">YOU WILL PAY WITH : </p>
+        <section>
+            
+            <section>
+                <img src="/images/creditCard.png" alt="Credit Card">
+            </section>
+        </section>
+    
+        <section>
+            <button class="btn btn-primary btn-lg payButton">PAY NOW : &dollar;<%= useComma(totalPay) %> </button>
+        </section>
+    </div>
+    
+</section>
 
 
 <%- include('./partials/userFooter.ejs') %>
