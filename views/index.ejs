@@ -10,6 +10,9 @@
 
 <% } %>
 
+<% function useComma(price) { %>
+  <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
 
 
       <main class="container-fluid homePage">
@@ -21,7 +24,7 @@
                 <div class="card-body">
                   <h4 class="card-title"><%= products[i].productName %></h4>
                   <p class="card-text"><%= products[i].productDescription %></p>
-                  <p class="card-text">&#36;<%= products[i].productPrice %></p>
+                  <p class="card-text">&#36;<%= useComma(products[i].productPrice) %></p>
                   <section class="homeLikes">
                     <p class="card-text">Likes : <%= products[i].likes %></p>
                     <form action="/editLike/<%= products[i]._id %>?method=PUT" method="POST">

@@ -6,6 +6,8 @@
     <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
 <% } %>
 
+<% const subtotal =  orders.map(item => item.quantity > 1 ? item.productPrice *= item.quantity : item.productPrice).reduce((acc,c) => acc + c) %>
+
 <main class="userAddress">
     <section class="userAddressFirst">
         <section class="flexSection">
@@ -86,8 +88,8 @@
                 <% } %>
         </section>
 
-        
-
+        <a href="/checkout/payment/review/<%= subtotal %>" class="confirmOrder">Confirm Order</a>
+       
         </section>
 
         <section class="orderSection">
@@ -105,8 +107,9 @@
                 <hr class="orderHr">
             <% } %>
 
-            <% const subtotal =  orders.map(item => item.quantity > 1 ? item.productPrice *= item.quantity : item.price).reduce((acc,c) => acc + c) %>
-
+            
+            
+            <% console.log(subtotal) %>
             <p class="text-center userSubtotal">Subtotal :  &dollar;<%=useComma(subtotal) %> </p>
             <p class="userCongras">Congratulations, <span class="userGift"><%= user.userName %></span> you are on a free shipping</p>
         </section>

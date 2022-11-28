@@ -10,7 +10,7 @@ module.exports = {
         try {
             const products =  await Product.find().lean()
             const cartNumber =  await Orders.countDocuments({ userId : req.user.id})
-            res.render('index.ejs', { products : products, title : "Home Page", user : req.user, cartNumber: cartNumber})
+            res.render('index.ejs', { products : products, title : "Home Page", user : req.user, cartNumber : cartNumber})
         } catch (error) {
             console.error(error)
         }
@@ -33,9 +33,10 @@ module.exports = {
         try {
             const productDetails = await Product.find({ _id  : req.params.id})
             const element = productDetails[0]
-            const ordererdCart = await Orders.find({ productId : req.params.id})
+            const ordererdCart = await Orders.find({ userId : req.user.id, productId : req.params.id})
+            console.log(ordererdCart)
             if(ordererdCart.length > 0){
-                await Orders.findOneAndUpdate({productId : element._id}, {
+                await Orders.findOneAndUpdate({userId : req.user.id, productId : element._id}, {
                     $inc : {quantity : 1}
                 })
 

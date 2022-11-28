@@ -367,3 +367,24 @@ footer > section > *{
     color: rgb(10, 83, 218);
 }
 
+.confirmOrder{
+    display: inline-block;
+    padding: 10px;
+    background-color: #093d2a;
+    color: #00d084;
+    border-radius: 10px;
+    text-decoration: none;
+    margin-top: 10px;
+    position: absolute;
+    right: 39%;
+
+}
+
+.confirmOrder:hover{
+    background-color: white;
+    color: #093d2a;
+    border: 2px solid #00d084;
+   transition: 1s; 
+   
+    
+}

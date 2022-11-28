@@ -2,6 +2,8 @@
 
 <%- include('./partials/loggedUser.ejs') %>
 
+<% const subtotal =  Orders.map(item => item.quantity > 1 ? item.productPrice *= item.quantity : item.productPrice).reduce((acc,c) => acc + c) %>
+
 <% if(Orders.length < 1) { %>
 
     <section class="text-center">
@@ -18,12 +20,8 @@
 
           
 
-            <% let sum  = 0 %> 
 
     <% Orders.forEach(item => { %>
-        
-        <!-- this is a function that creates a comma after three digits of numbers for the price of items -->
-        
             <section class="orderItems">
                 <p><%= item.productName %></p>
                 <section class="orderItemsFlex">
@@ -40,20 +38,14 @@
                     <form action="/order/plus/<%= item._id %>?method=PUT" method="POST">
                     <button><i class="fa-solid fa-plus"></i></button>
                     </form>
-
-                    <% if(item.quantity <= 1 ) { %>
+                    
+                    
+                     <% if(item.quantity === 1 ) { %>
                         <p>&dollar;<%= useComma(item.productPrice)  %></p>
                     <% } else { %>
-                        <p>&dollar;<%= useComma(item.productPrice * item.quantity) %></p>
+                        <p>&dollar; <%=  useComma(((item.productPrice) + (item.quantity)) -  item.quantity) %></p>
                     <% } %>
                     
-                    <% if(item.quantity <= 1) { %>
-                        <% sum += item.productPrice %>
-                    <% } else { %>
-                        <% sum += item.productPrice * item.quantity %>
-                    <% } %>
-
-                    <!-- <% item.quantity <= 1 ? sum += item.productPrice : sum  += item.productPrice * item.quantity %> -->
                 
 
                 </section>
@@ -72,7 +64,7 @@
             <span>Shipping</span> <p>Free</p>
             
             <span>Subtotal : </span> 
-            <p>&dollar;<%=useComma(sum) %></p> 
+            <p>&dollar;<%=useComma(subtotal) %></p> 
             <p>
                
             </p>
