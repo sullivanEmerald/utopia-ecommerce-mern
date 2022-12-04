@@ -1,0 +1,26 @@
+<%- include('./partials/homeHeader.ejs') %>
+
+<% if(user) {%>
+
+    <%- include('./partials/confirmCheck.ejs') %>
+
+    <h3 class="errorHeader">Hello, <span class="errorName"> <%= user.userName %>, </span> You don't admin Priviledges to this Route. Kindly contact the Admin</h3>
+    <button class="errorButton btn btn-outline-info"  onclick="history.back()"> BACK</button>
+
+<% } else { %>
+    
+    <h3 class="errorHeader" id="notUser">Hello Anonymous User, You don't admin Priviledges to this Route. Kindly contact the Admin</h3>
+    <button class="errorButton btn btn-outline-info"  onclick="history.back()"> BACK</button>
+    
+<% } %>
+
+
+
+<% if(user) {%>
+
+    <%- include('./partials/userFooter.ejs') %>
+
+<% } else { %>
+     
+    <p class="errorFooter">&copy; Welcome, to Utopia, 2022</p>
+<% } %>

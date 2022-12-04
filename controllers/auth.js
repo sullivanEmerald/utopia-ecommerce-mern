@@ -90,13 +90,16 @@ exports.postSignup = async (req, res, next) => {
       req.body.email = validator.normalizeEmail(req.body.email, {
         gmail_remove_dots: false,
       });
+
+      
     
       const user = new User({
         userName: req.body.userName,
         email: req.body.email,
         password: req.body.password,
         image : result.secure_url,
-        cloudinaryId : result.public_id
+        cloudinaryId : result.public_id,
+        adminStatus : false
       });
     
       User.findOne(
