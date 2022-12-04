@@ -8,7 +8,7 @@
 <% function sendMsg() { %>
     <% setTimeout(() => { %>
     <% console.log('sullivan') %>
-<% }, '1000') %>
+<% }, '5000') %>
 
 <% } %>
 
@@ -52,11 +52,36 @@
         </section>
     
         <section>
-            <button class="btn btn-primary btn-lg payButton">PAY NOW : &dollar;<%= useComma(totalPay) %> </button>
+            <button class="btn btn-primary btn-lg payButton" data-bs-toggle="modal" data-bs-target="#payMethod">PAY NOW : &dollar;<%= useComma(totalPay) %> </button>
         </section>
     </div>
     
 </section>
+
+<div class="modal fade" id="payMethod">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title"><p class="text-info">Thanks For Your Patronage</p></h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>Accept Our thanks for trusting us. Your Order have been made and payment confirmed. Be checking your status progress on your dashboard to keep track of your orders</p>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <!-- <a href="/" role="button" class="btn btn-outline-info" data-bs-dismiss="modal">Close</a> -->
+          <a href="/" class="btn btn-outline-primary">Back Home <%= user.userName %></a>
+        </div>
+  
+      </div>
+    </div>
+  </div>
 
 
 <%- include('./partials/userFooter.ejs') %>

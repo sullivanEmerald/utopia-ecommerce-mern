@@ -1,5 +1,5 @@
-const Product =  require('../../model/product')
-const cloudinary =  require('../../middleware/cloudinary')
+const Product =  require('../model/product')
+const cloudinary =  require('../middleware/cloudinary')
 
 module.exports = {
     getIndex : async (req, res) => {

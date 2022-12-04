@@ -3,14 +3,21 @@ const Product = require('../model/product')
 const Orders = require('../model/orders')
 const cloudinary =  require('../middleware/cloudinary')
 const Address =  require("../model/info")
+const { connect } = require('mongoose')
 
 
 module.exports = {
     getIndex : async (req, res) => {
         try {
             const products =  await Product.find().lean()
-            const cartNumber =  await Orders.countDocuments({ userId : req.user.id})
-            res.render('index.ejs', { products : products, title : "Home Page", user : req.user, cartNumber : cartNumber})
+            if(req.user){
+                const cartNumber =  await Orders.countDocuments({ userId : req.user.id})
+                res.render('index.ejs', { products : products, title : "Home Page", user : req.user, cartNumber : cartNumber})
+            }else{
+                res.render('index.ejs', { products : products, title : "Home Page", user : req.user}) 
+            }
+            
+            
         } catch (error) {
             console.error(error)
         }
@@ -34,7 +41,6 @@ module.exports = {
             const productDetails = await Product.find({ _id  : req.params.id})
             const element = productDetails[0]
             const ordererdCart = await Orders.find({ userId : req.user.id, productId : req.params.id})
-            console.log(ordererdCart)
             if(ordererdCart.length > 0){
                 await Orders.findOneAndUpdate({userId : req.user.id, productId : element._id}, {
                     $inc : {quantity : 1}
@@ -113,6 +119,16 @@ module.exports = {
                 const totalOrder =  await Orders.find({ userId : req.user.id})
                 res.render('checkout.ejs', { userOrders : totalOrder, title : "CheckOut", user : req.user})
             }
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    indexCart : async (req, res) => {
+        try {
+            const products =  await Product.find().lean()
+                const cartNumber =  await Orders.countDocuments({ userId : req.user.id})
+                res.render('logIndex.ejs', { products : products, title : "Home Page", user : req.user, cartNumber : cartNumber})
         } catch (error) {
             console.error(error)
         }

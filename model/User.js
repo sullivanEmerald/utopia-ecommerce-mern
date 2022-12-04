@@ -14,6 +14,13 @@ cloudinaryId : {
     type : String,
     require : true,
 },
+
+
+adminStatus : {
+  type : Boolean,
+  default : false
+}
+
 });
 
 // Password hash middleware.

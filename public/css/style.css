@@ -23,9 +23,10 @@ hr{
     
 }
 
-footer > section, .homeLikes, .navbar-, .orderPage, .orderItemsFlex{
+footer > section, .homeLikes, .navbar, .orderPage, .orderItemsFlex{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     
 }
 

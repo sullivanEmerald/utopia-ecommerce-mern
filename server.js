@@ -15,11 +15,17 @@ const checkoutRoute = require('./routes/checkout')
 require('dotenv').config({ path: './config/.env'})
 
 require('./config/passport')(passport)
-require('./config/adminPassport')(passport)
 
 connectDB()
 
-// Initializing my middlewares 
+
+
+/**
+ * ...............GENERAL CONFIGURATION................
+ * 
+ */
+
+
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded( { extended : true}))

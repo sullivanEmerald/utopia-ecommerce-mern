@@ -1,14 +1,14 @@
 <%- include('./partials/homeHeader.ejs') %>
 
-<% if  (user)  { %>
+<% if  (user) { %>
 
 <%- include('./partials/loggedUser.ejs') %>
 
 <% } else { %>
- 
+
   <%- include('./partials/homeNav.ejs') %>
 
-<% } %>
+ <% } %> 
 
 <% function useComma(price) { %>
   <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
@@ -64,7 +64,7 @@
       
             <!-- Modal body -->
             <div class="modal-body">
-              <p>Alert!! You Must Be User To Start Adding to Cart....</p>
+              <p>Alert!! You must Login to start adding items to the cart....</p>
             </div>
       
             <!-- Modal footer -->
