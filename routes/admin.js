@@ -9,5 +9,6 @@ const { ensureAdmin} = require('../middleware/auth')
 router.get('/', ensureAdmin, adminControl.getIndex)
 router.get('/create', adminControl.createProductForm)
 router.post('/createProduct', upload.single('file'), adminControl.createProduct)
+router.get('/view/users', adminControl.viewUsers )
 
 module.exports = router

@@ -1,0 +1,34 @@
+<%- include('../partials/admin/header.ejs') %>
+
+<%- include('../partials/admin/nav.ejs') %>
+
+<% if(users.length < 0) {%>
+
+    <h3 class="errorHeader" id="notUser">Hello Admin, This Application has no users yet</h3>
+    <button class="errorButton btn btn-outline-info"  onclick="history.back()"> BACK</button>
+
+<% } else { %>
+    <h1 class="userHeader">Utopia Registered Users</h1>
+    <section class="userSection">
+
+    
+    <% users.forEach(item => { %>
+
+        <section>
+            <p> NAME : <%= item.userName %></p>
+            <p> EMAIL : <%= item.email %></p>
+            <img src="<%= item.image %>" alt="">
+            <p> Admin Status :  <%= item.adminStatus %></p>
+            <button class="btn btn-outline-danger">Grant Admin</button>
+            <button class="btn btn-outline-info">Delete Account</button>
+        </section>
+
+    <% }) %>
+
+    </section>
+
+<% } %>
+
+
+
+<%- include('../partials/admin/footer.ejs') %>

@@ -483,3 +483,46 @@ footer > section > *{
     text-decoration: underline;
    
 }
+
+/**
+    **************************** ADMIN PAGE STYLES ***********************
+*/
+
+/* ADMIN NAV */
+
+#adminNav{
+    background-color: #00061a;
+}
+
+#adminNav * li > a {
+    color:crimson;
+}
+
+#adminNav * li > a:hover{
+    color: #00af6f;
+}
+
+
+
+/* REGISTERED UTOPIA USERS */
+
+.userHeader{
+    text-align: center;
+    color: #00061a;
+    text-decoration: underline;
+    margin-top: 20px;
+}
+
+
+.userSection{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.userSection img{
+    border-image : linear-gradient(60deg, red, yellow);
+    border-width: 6px;
+    border-style: solid ;
+
+
+}

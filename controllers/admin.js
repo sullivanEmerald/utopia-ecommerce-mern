@@ -1,5 +1,6 @@
 const Product =  require('../model/product')
 const cloudinary =  require('../middleware/cloudinary')
+const Users =  require('../model/User')
 
 module.exports = {
     getIndex : async (req, res) => {
@@ -34,4 +35,13 @@ module.exports = {
             console.error(error)
         }
     },
+
+    viewUsers : async (req, res) => {
+        try {
+            const users =  await Users.find().lean()
+            res.render('admin/users.ejs', {users : users, title : "Utopia Users"} )
+        } catch (error) {
+            console.error(error)
+        }
+    }
 }
