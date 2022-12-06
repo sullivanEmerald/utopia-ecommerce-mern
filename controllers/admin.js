@@ -1,6 +1,7 @@
 const Product =  require('../model/product')
 const cloudinary =  require('../middleware/cloudinary')
 const Users =  require('../model/User')
+const User = require('../model/User')
 
 module.exports = {
     getIndex : async (req, res) => {
@@ -40,6 +41,28 @@ module.exports = {
         try {
             const users =  await Users.find().lean()
             res.render('admin/users.ejs', {users : users, title : "Utopia Users"} )
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    updateAdmin : async (req, res) => {
+        try {
+            await Users.findOneAndUpdate({ _id : req.params.id}, {
+                adminStatus : false
+            })
+            res.redirect('/admin/view/users')
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    reverseAdmin : async (req, res) => {
+        try {
+            await Users.findOneAndUpdate({ _id : req.params.id}, {
+                adminStatus : true
+            })
+        res.redirect('/admin/view/users')
         } catch (error) {
             console.error(error)
         }

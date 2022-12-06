@@ -517,12 +517,17 @@ footer > section > *{
 .userSection{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .userSection img{
-    border-image : linear-gradient(60deg, red, yellow);
-    border-width: 6px;
+    border-image : linear-gradient(50deg, #00d084, crimson) 1;
+    border-width: 2px;
     border-style: solid ;
+    height: 200px;
+    width: 200px;
+    /* border-image-slice: 1; */
 
 
 }
+
