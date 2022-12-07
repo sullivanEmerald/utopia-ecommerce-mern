@@ -12,5 +12,6 @@ router.post('/createProduct', upload.single('file'), adminControl.createProduct)
 router.get('/view/users', adminControl.viewUsers )
 router.put('/updateAdmin/:id', adminControl.updateAdmin)
 router.put('/ReverseAdmin/:id', adminControl.reverseAdmin)
+router.delete('/deleteUser/:id', adminControl.deleteUser)
 
 module.exports = router

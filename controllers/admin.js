@@ -66,5 +66,15 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
+    },
+
+    deleteUser : async (req, res) => {
+        try {
+            await Users.findOneAndDelete({ _id :  req.params.id})
+            console.log('deleted')
+            res.redirect('/admin/view/users')
+        } catch (error) {
+            console.error(error)
+        }
     }
 }
