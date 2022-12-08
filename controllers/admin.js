@@ -76,5 +76,14 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
+    },
+
+    viewAdmin : async (req, res) => {
+        try {
+            const currentAdmin = await Users.find({ adminStatus : true}).lean()
+            res.render('admin/admins.ejs',  { admin : currentAdmin, title : "Utopia Admins"})
+        } catch (error) {
+            console.error(error)
+        }
     }
-}
+}   

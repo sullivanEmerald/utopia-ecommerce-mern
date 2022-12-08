@@ -514,10 +514,11 @@ footer > section > *{
 }
 
 
-.userSection{
+.userSection, .buttonUser{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    margin-top: 40px;
 }
 
 .userSection img{
@@ -528,6 +529,17 @@ footer > section > *{
     width: 200px;
     /* border-image-slice: 1; */
 
+}
 
+.userSection p{
+    color: #00061a;
+    font-size: 20px;
+}
+
+
+.buttonUser{
+    margin-top: 20px;
+    justify-content: flex-start;
+    column-gap: 10px;
 }
 

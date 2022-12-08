@@ -20,21 +20,25 @@
             <img src="<%= item.image %>" alt="">
             <p> Admin Status :  <%= item.adminStatus %></p>
 
+            <aside class="buttonUser">
             <%  if( item.adminStatus ) { %>
-             <form action="/admin/updateAdmin/<%= item._id %>?_method=PUT" method="POST">
-                <button type="submit" class="btn btn-outline-danger">Widthdraw Admin</button>
-            </form>
-            <% } else { %>
-
+                <form action="/admin/updateAdmin/<%= item._id %>?_method=PUT" method="POST">
+                    <button type="submit" class="btn btn-outline-danger">Widthdraw Admin</button>
+                </form>
+             <% } else { %>
+       
                 <form action="/admin/ReverseAdmin/<%= item._id %>?_method=PUT" method="POST">
                     <button type="submit" class="btn btn-outline-danger">Make Admin</button>
                 </form>
-
+       
             <% } %>
+       
+                <form action="/admin/deleteUser/<%= item._id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-outline-info">Delete User</button>
+                </form>
+            </aside>
 
-            <form action="/admin/deleteUser/<%= item._id %>?_method=DELETE" method="POST">
-                <button type="submit" class="btn btn-outline-info">Delete User</button>
-            </form>
+            
             
         </section>
 
