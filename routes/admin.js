@@ -14,5 +14,7 @@ router.put('/updateAdmin/:id', adminControl.updateAdmin)
 router.put('/ReverseAdmin/:id', adminControl.reverseAdmin)
 router.delete('/deleteUser/:id', adminControl.deleteUser)
 router.get('/view/admin', adminControl.viewAdmin)
+router.put('/removeAdmin/:id', adminControl.removeAdmin)
+router.get('/view/orders', adminControl.getOrders)
 
 module.exports = router

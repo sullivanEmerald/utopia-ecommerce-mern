@@ -1,7 +1,9 @@
 const Product =  require('../model/product')
 const cloudinary =  require('../middleware/cloudinary')
 const Users =  require('../model/User')
-const User = require('../model/User')
+const Orders =  require('../model/orders')
+const userAddress =  require('../model/info')
+
 
 module.exports = {
     getIndex : async (req, res) => {
@@ -82,6 +84,28 @@ module.exports = {
         try {
             const currentAdmin = await Users.find({ adminStatus : true}).lean()
             res.render('admin/admins.ejs',  { admin : currentAdmin, title : "Utopia Admins"})
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+
+    removeAdmin :  async (req, res) => {
+        try {
+            await Users.findOneAndDelete({ _id :  req.params.id}, {
+                adminStatus :  false
+            })
+            res.redirect('/admin/view/admin')
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    getOrders  : async (req, res) => {
+        try {
+            const userOrders =  await Orders.find().sort({createdAt : -1}).lean()
+            const userInfo = await userAddress.find().lean()
+            res.render('admin/userOrders.ejs', { title : 'User Orders', items : userOrders, info : userInfo})
         } catch (error) {
             console.error(error)
         }

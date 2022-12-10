@@ -18,12 +18,19 @@
             <p> NAME : <%= item.userName %></p>
             <p> EMAIL : <%= item.email %></p>
             <img src="<%= item.image %>" alt="">
-            <p> Admin Status :  <%= item.adminStatus %></p>
+            <% if(item.adminStatus) { %>
+                <p> Admin Status :  <%= item.adminStatus %> <i class="fa-solid fa-circle-check userFont "></i>
+            <% } else { %>
+                <p> Admin Status :  <%= item.adminStatus %> <i class="fa-solid fa-circle-xmark userFont"></i>
+
+            <% } %>
+            
 
             <aside class="buttonUser">
             <%  if( item.adminStatus ) { %>
                 <form action="/admin/updateAdmin/<%= item._id %>?_method=PUT" method="POST">
                     <button type="submit" class="btn btn-outline-danger">Widthdraw Admin</button>
+                    
                 </form>
              <% } else { %>
        

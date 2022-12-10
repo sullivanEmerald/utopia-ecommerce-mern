@@ -1,1 +1,40 @@
-<h1>Sullivan, The Resilient Software Engineer in London</h1>
+<%- include('../partials/admin/header.ejs') %>
+
+<%- include('../partials/admin/nav.ejs') %>
+
+
+<% if(admin.length < 0) {%>
+
+    <h3 class="errorHeader" id="notUser">This Application has no Admin yet yet</h3>
+    <button class="errorButton btn btn-outline-info"  onclick="history.back()"> BACK</button>
+
+<% } else { %>
+    <h1 class="userHeader">Utopia Admins</h1>
+    <section class="userSection">
+
+    
+    <% admin.forEach(item => { %>
+
+        <section>
+            <p> NAME : <%= item.userName %></p>
+            <p> EMAIL : <%= item.email %></p>
+            <img src="<%= item.image %>" alt="">
+
+            <aside class="buttonUser">
+                 <form action="/admin/removeAdmin/<%= item._id %>?_method=PUT" method="POST">
+                    <button type="submit" class="btn btn-outline-info">Remove As Admin</button>
+                </form>
+            </aside>
+
+            
+            
+        </section>
+
+    <% }) %>
+
+    </section>
+
+<% } %>
+
+
+<%- include('../partials/admin/footer.ejs') %>
