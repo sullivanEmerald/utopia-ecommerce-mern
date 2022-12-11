@@ -1,0 +1,45 @@
+<%- include('../partials/admin/header.ejs') %>
+
+<%- include('../partials/admin/nav.ejs') %>
+
+<% function useComma(price) { %>
+    <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
+
+
+<% if(items.length < 0) {%>
+
+    <h3 class="errorHeader" id="notUser"> No Order Have been made yet</h3>
+    <button class="errorButton btn btn-outline-info"  onclick="history.back()"> BACK</button>
+
+<% } else { %>
+    
+
+    <% items.forEach((order) => { %> 
+        <section class="orderItems">
+            <p><%= order.productName %></p>
+            <section class="orderItemsFlex">
+                <img src="<%= order.productImage %>" alt="My Cart">
+                <p><%= order.productDescription %></p>
+
+                <p><%= order.quantity %></p>
+
+                 <% if(order.quantity === 1 ) { %>
+                    <p>&dollar;<%= useComma(order.productPrice)  %></p>
+                <% } else { %>
+                    <p>&dollar; <%= useComma(order.productPrice * order.quantity) %></p>
+                <% } %>
+                
+            
+
+            </section>
+            
+        </section>
+    <% }) %>
+
+<% } %>
+
+<% console.log(items.length) %>
+
+
+<%- include('../partials/admin/footer.ejs') %>
