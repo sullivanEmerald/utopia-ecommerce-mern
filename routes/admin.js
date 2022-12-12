@@ -7,14 +7,14 @@ const { ensureAdmin} = require('../middleware/auth')
 // RENDERING ADMIN PAGES
 
 router.get('/', ensureAdmin, adminControl.getIndex)
-router.get('/create', adminControl.createProductForm)
-router.post('/createProduct', upload.single('file'), adminControl.createProduct)
-router.get('/view/users', adminControl.viewUsers )
-router.put('/updateAdmin/:id', adminControl.updateAdmin)
-router.put('/ReverseAdmin/:id', adminControl.reverseAdmin)
-router.delete('/deleteUser/:id', adminControl.deleteUser)
-router.get('/view/admin', adminControl.viewAdmin)
-router.put('/removeAdmin/:id', adminControl.removeAdmin)
-router.get('/view/orders', adminControl.getOrders)
+router.get('/create', ensureAdmin, adminControl.createProductForm)
+router.post('/createProduct', ensureAdmin, upload.single('file'), adminControl.createProduct)
+router.get('/view/users', ensureAdmin, adminControl.viewUsers )
+router.put('/updateAdmin/:id', ensureAdmin, adminControl.updateAdmin)
+router.put('/ReverseAdmin/:id', ensureAdmin,adminControl.reverseAdmin)
+router.delete('/deleteUser/:id', ensureAdmin, adminControl.deleteUser)
+router.get('/view/admin', ensureAdmin, adminControl.viewAdmin)
+router.put('/removeAdmin/:id', ensureAdmin, adminControl.removeAdmin)
+router.get('/view/orders', ensureAdmin, adminControl.getOrders)
 
 module.exports = router
