@@ -105,7 +105,6 @@ module.exports = {
         try {
             const userOrders =  await Orders.find().sort({createdAt : -1}).lean()
             const userInfo = await userAddress.find().lean()
-            console.log(userInfo)
             res.render('admin/userOrders.ejs', { title : 'User Orders', items : userOrders, info : userInfo})
         } catch (error) {
             console.error(error)

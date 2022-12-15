@@ -14,8 +14,10 @@
 
 <% } else { %>
     
-
+                            
     <% items.forEach((order) => { %> 
+        <% const found = info.find((item) => item.userId ===  order.userId) %>
+        <% console.log(found) %>
         <section class="orderItems">
             <p><%= order.productName %></p>
             <section class="orderItemsFlex">
