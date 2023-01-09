@@ -13,28 +13,52 @@
     <button class="errorButton btn btn-outline-info"  onclick="history.back()"> BACK</button>
 
 <% } else { %>
+    <% for(let i = 0; i < items.length; i++) { %> 
+        <% const user = items[i].userId %>
+            <% for(let k = 0; k < info.length; k++) { %>
+                <% const userInfo = items[i].userId %>
+                <% if(user === info[i].userId) { %>
+                <section class="orderItems">
+                    <p><%= items[i].productName %></p>
+                    <section class="orderItemsFlex">
+                        <img src="<%= items[i].productImage %>" alt="My Cart">
+                        <p><%= items[i].productDescription %></p>
+        
+                        <p><%= items[i].quantity %></p>
+        
+                         <% if(items[i].quantity === 1 ) { %>
+                            <p>&dollar;<%= useComma(items[i].productPrice)  %></p>
+                        <% } else { %>
+                            <p>&dollar; <%= useComma(items[i].productPrice * items[i].quantity) %></p>
+                        <% } %>
+                    </section>
+                    <p><%= info[i].address %></p>
+                    <p><%= info[i].phoneNo %></p>
+                    <p><%= info[i].landmark %></p>
+
+
+                </section>
+            <% } else { %>
+                <section class="orderItems">
+                    <p><%= items[i].productName %></p>
+                    <section class="orderItemsFlex">
+                        <img src="<%= items[i].productImage %>" alt="My Cart">
+                        <p><%= items[i].productDescription %></p>
+        
+                        <p><%= items[i].quantity %></p>
+        
+                         <% if(items[i].quantity === 1 ) { %>
+                            <p>&dollar;<%= useComma(items[i].productPrice)  %></p>
+                        <% } else { %>
+                            <p>&dollar; <%= useComma(items[i].productPrice * items[i].quantity) %></p>
+                        <% } %>
+                    </section>
+                    <p>The user didnt add address</p>
+            <% } %>
+        <% } %>
+        <% } %>
+       
     
-                            
-    <% items.forEach((order) => { %> 
-        <% const found = info.find((item) => item.userId ===  order.userId) %>
-        <% console.log(found) %>
-        <section class="orderItems">
-            <p><%= order.productName %></p>
-            <section class="orderItemsFlex">
-                <img src="<%= order.productImage %>" alt="My Cart">
-                <p><%= order.productDescription %></p>
-
-                <p><%= order.quantity %></p>
-
-                 <% if(order.quantity === 1 ) { %>
-                    <p>&dollar;<%= useComma(order.productPrice)  %></p>
-                <% } else { %>
-                    <p>&dollar; <%= useComma(order.productPrice * order.quantity) %></p>
-                <% } %>              
-            </section>
-            
-        </section>
-    <% }) %>
 
 <% } %>
 

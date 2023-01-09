@@ -92,13 +92,13 @@ module.exports = {
 
     removeAdmin :  async (req, res) => {
         try {
-            await Users.findOneAndDelete({ _id :  req.params.id}, {
+            await Users.findOneAndUpdate({ _id :  req.params.id}, {
                 adminStatus :  false
             })
             res.redirect('/admin/view/admin')
         } catch (error) {
             console.error(error)
-        }
+        }W
     },
 
     getOrders  : async (req, res) => {
