@@ -10,6 +10,7 @@ const logger = require('morgan')
 const mainRoutes = require('./routes/main')
 const adminRoute  =  require('./routes/admin')
 const checkoutRoute = require('./routes/checkout')
+const product = require('./routes/product')
 
 // connecting my app with the environmetn variables
 require('dotenv').config({ path: './config/.env'})
@@ -54,6 +55,7 @@ app.use(flash())
 app.use('/', mainRoutes)
 app.use('/admin', adminRoute)
 app.use('/checkout', checkoutRoute)
+app.use('/products', product)
 
 
 // connecting my server

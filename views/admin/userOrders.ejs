@@ -14,32 +14,13 @@
 
 <% } else { %>
     <% for(let i = 0; i < items.length; i++) { %> 
-        <% const user = items[i].userId %>
-            <% for(let k = 0; k < info.length; k++) { %>
-                <% const userInfo = items[i].userId %>
-                <% if(user === info[i].userId) { %>
-                <section class="orderItems">
-                    <p><%= items[i].productName %></p>
-                    <section class="orderItemsFlex">
-                        <img src="<%= items[i].productImage %>" alt="My Cart">
-                        <p><%= items[i].productDescription %></p>
-        
-                        <p><%= items[i].quantity %></p>
-        
-                         <% if(items[i].quantity === 1 ) { %>
-                            <p>&dollar;<%= useComma(items[i].productPrice)  %></p>
-                        <% } else { %>
-                            <p>&dollar; <%= useComma(items[i].productPrice * items[i].quantity) %></p>
-                        <% } %>
-                    </section>
-                    <p><%= info[i].address %></p>
-                    <p><%= info[i].phoneNo %></p>
-                    <p><%= info[i].landmark %></p>
-
-
-                </section>
+        <% const userAdd =  info.find(el => el.userId === items[i].userId) %>
+            <% if(userAdd) { %>
+                <p>found</p>
             <% } else { %>
-                <section class="orderItems">
+                <p>not found</p>
+            <% } %>
+                <!-- <section class="orderItems">
                     <p><%= items[i].productName %></p>
                     <section class="orderItemsFlex">
                         <img src="<%= items[i].productImage %>" alt="My Cart">
@@ -53,10 +34,10 @@
                             <p>&dollar; <%= useComma(items[i].productPrice * items[i].quantity) %></p>
                         <% } %>
                     </section>
-                    <p>The user didnt add address</p>
-            <% } %>
+                </section> -->
+          
         <% } %>
-        <% } %>
+
        
     
 
