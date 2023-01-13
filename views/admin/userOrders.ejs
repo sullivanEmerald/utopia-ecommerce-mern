@@ -15,12 +15,33 @@
 <% } else { %>
     <% for(let i = 0; i < items.length; i++) { %> 
         <% const userAdd =  info.find(el => el.userId.toString() === items[i].userId.toString()) %>
+        <% const user = users.find(me => me._id.toString() === items[i].userId.toString()) %>
+        <% console.log(user) %>
             <% if(userAdd) { %>
-                <% console.log(userAdd) %>
+                <section class="orderItems">
+                    <span>Name : </span> <p><%= items[i].productName %></p>
+                    <section class="orderItemsFlex">
+                        <img src="<%= items[i].productImage %>" alt="My Cart">
+                       <span>Description : </span> <p><%= items[i].productDescription %></p>
+        
+                        <p>Quality : </p><p><%= items[i].quantity %></p>
+        
+                         <% if(items[i].quantity === 1 ) { %>
+                            <p>Price : </p><p>&dollar;<%= useComma(items[i].productPrice)  %></p>
+                        <% } else { %>
+                            <p>Price : </p><p>&dollar; <%= useComma(items[i].productPrice * items[i].quantity) %></p>
+                        <% } %>
+                    </section>
+                    <p><%= userAdd.address  %></p>
+                    <p><%= userAdd.phoneNo  %></p>
+                    <p><%= userAdd.landmark  %></p>
+                    <p><%= user.userName  %></p>
+                    <p><%= user.email  %></p>
+
+                    
+                </section>
             <% } else { %>
-                <p>not found</p>
-            <% } %>
-                <!-- <section class="orderItems">
+                <section class="orderItems">
                     <p><%= items[i].productName %></p>
                     <section class="orderItemsFlex">
                         <img src="<%= items[i].productImage %>" alt="My Cart">
@@ -34,7 +55,11 @@
                             <p>&dollar; <%= useComma(items[i].productPrice * items[i].quantity) %></p>
                         <% } %>
                     </section>
-                </section> -->
+                </section>
+                <p>No address found
+                </p>
+            <% } %>
+                
           
         <% } %>
 
