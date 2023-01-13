@@ -551,3 +551,16 @@ footer > section > *{
     display: inline-block;
     margin-top: 7px;
 }
+
+
+/* DROPDOWN */
+
+.dropdown-menu li a {
+    color: #00d084;
+}
+
+.dropdown-menu li a:hover{
+    background-color: #093d2a;
+    color: #fff;
+    border-radius: 10px;
+}

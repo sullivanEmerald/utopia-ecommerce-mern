@@ -1,12 +1,12 @@
-<%- include('./partials/homeHeader.ejs') %>
+<%- include('../partials/homeHeader.ejs') %>
 
 <% if  (user) { %>
 
-<%- include('./partials/loggedUser.ejs') %>
+<%- include('../partials/loggedUser.ejs') %>
 
 <% } else { %>
 
-  <%- include('./partials/homeNav.ejs') %>
+  <%- include('../partials/homeNav.ejs') %>
 
  <% } %> 
 
@@ -17,23 +17,23 @@
 
       <main class="container-fluid homePage">
           <div class="row">
-            <% for(let i = 0; i < cloths.length;  i++) { %>
+            <% for(let i = 0; i < electronics.length;  i++) { %>
             <div class="col-md-4">
               <div class="card homeCard" style="width:400px">
-                <img class="card-img-top" src="<%= cloths[i].productImage %>" alt="Card image">
+                <img class="card-img-top" src="<%= electronics[i].productImage %>" alt="Card image">
                 <div class="card-body">
-                  <h4 class="card-title"><%= cloths[i].productName %></h4>
-                  <p class="card-text"><%= cloths[i].productDescription %></p>
-                  <p class="card-text">&#36;<%= useComma(cloths[i].productPrice) %></p>
+                  <h4 class="card-title"><%= electronics[i].productName %></h4>
+                  <p class="card-text"><%= electronics[i].productDescription %></p>
+                  <p class="card-text">&#36;<%= useComma(electronics[i].productPrice) %></p>
                   <section class="homeLikes">
-                    <p class="card-text">Likes : <%= cloths[i].likes %></p>
-                    <form action="/editLike/<%= cloths[i]._id %>?method=PUT" method="POST">
+                    <p class="card-text">Likes : <%= electronics[i].likes %></p>
+                    <form action="/editLike/<%= electronics[i]._id %>?method=PUT" method="POST">
                       <button type="submit" class="btn btn-primary"><i class="fa-solid fa-thumbs-up"></i></span>
                     </form>
                   </section>
                   <% if  (user)  { %>
 
-                    <form action="/products/addCart/<%= cloths[i]._id %>" method="POST">
+                    <form action="/products/addElectronics/<%= electronics[i]._id %>" method="POST">
 
                       <button type="submit" class="btn btn-primary"><i class="fa-solid fa-circle-plus"></i></button>
 
@@ -78,7 +78,7 @@
 
       
 
-<%- include('./partials/homeFooter.ejs') %>
+<%- include('../partials/homeFooter.ejs') %>
 
 
       
