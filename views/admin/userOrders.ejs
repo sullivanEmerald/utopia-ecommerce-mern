@@ -14,9 +14,9 @@
 
 <% } else { %>
     <% for(let i = 0; i < items.length; i++) { %> 
-        <% const userAdd =  info.find(el => el.userId === items[i].userId) %>
+        <% const userAdd =  info.find(el => el.userId.toString() === items[i].userId.toString()) %>
             <% if(userAdd) { %>
-                <p>found</p>
+                <% console.log(userAdd) %>
             <% } else { %>
                 <p>not found</p>
             <% } %>
