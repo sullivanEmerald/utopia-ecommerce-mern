@@ -13,12 +13,13 @@
     <button class="errorButton btn btn-outline-info"  onclick="history.back()"> BACK</button>
 
 <% } else { %>
+    <% counter = 1 %>
     <% for(let i = 0; i < items.length; i++) { %> 
         <% const userAdd =  info.find(el => el.userId.toString() === items[i].userId.toString()) %>
         <% const user = users.find(me => me._id.toString() === items[i].userId.toString()) %>
-        <% console.log(user) %>
             <% if(userAdd) { %>
                 <section class="orderItems">
+                    <p><%=  counter ++ %>.</p>
                     <span>Name : </span> <p><%= items[i].productName %></p>
                     <section class="orderItemsFlex">
                         <img src="<%= items[i].productImage %>" alt="My Cart">
