@@ -564,3 +564,26 @@ footer > section > *{
     color: #fff;
     border-radius: 10px;
 }
+
+.orderItems.container{
+    margin: 50px auto;
+}
+
+.orderItems.container span {
+    color: crimson;
+}
+.orderItems.container p{
+    color: #00af6f;
+}
+
+.orderItemsFlex > img{
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+}
+
+.orderButton{
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+} 

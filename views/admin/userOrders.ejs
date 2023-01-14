@@ -18,28 +18,32 @@
         <% const userAdd =  info.find(el => el.userId.toString() === items[i].userId.toString()) %>
         <% const user = users.find(me => me._id.toString() === items[i].userId.toString()) %>
             <% if(userAdd) { %>
-                <section class="orderItems">
+                <section class="orderItems container">
                     <p><%=  counter ++ %>.</p>
                     <span>Name : </span> <p><%= items[i].productName %></p>
                     <section class="orderItemsFlex">
                         <img src="<%= items[i].productImage %>" alt="My Cart">
                        <span>Description : </span> <p><%= items[i].productDescription %></p>
         
-                        <p>Quality : </p><p><%= items[i].quantity %></p>
+                        <span>Quality : </span><p><%= items[i].quantity %></p>
         
                          <% if(items[i].quantity === 1 ) { %>
-                            <p>Price : </p><p>&dollar;<%= useComma(items[i].productPrice)  %></p>
+                            <span>Price : </span><p>&dollar;<%= useComma(items[i].productPrice)  %></p>
                         <% } else { %>
-                            <p>Price : </p><p>&dollar; <%= useComma(items[i].productPrice * items[i].quantity) %></p>
+                            <span>Price : </span><p>&dollar; <%= useComma(items[i].productPrice * items[i].quantity) %></p>
                         <% } %>
                     </section>
-                    <p><%= userAdd.address  %></p>
-                    <p><%= userAdd.phoneNo  %></p>
-                    <p><%= userAdd.landmark  %></p>
-                    <p><%= user.userName  %></p>
-                    <p><%= user.email  %></p>
+                    <span>Customer Name : </span><p><%= user.userName  %></p>
+                    <span>Customer Email : </span><p><%= user.email  %></p>
+                    <span>Customer Address : </span><p><%= userAdd.address  %></p>
+                    <span>Customer Phone Number : </span><p><%= userAdd.phoneNo  %></p>
+                    <span>Customer Landmark Address : </span><p><%= userAdd.landmark  %></p> 
 
-                    
+                    <section class="orderButton">
+                        <button class="btn btn-outline-primary">Pending</button>
+                        <button class="btn btn-outline-info">Shipped</button>
+                        <button class="btn btn-outline-danger">Ready for pickup</button>
+                    </section>
                 </section>
             <% } else { %>
                 <section class="orderItems">
