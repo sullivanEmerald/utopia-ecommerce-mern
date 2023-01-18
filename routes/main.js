@@ -15,6 +15,7 @@ router.post('/order/minus/:id', indexController.minusQuality)
 router.post('/order/remove/:id', indexController.removeOrder)
 router.get('/order/checkout', indexController.checkout)
 router.get('/logIndex', ensureAuth, indexController.indexCart)
+router.get('/track/orders',indexController.fetchOrders )
 
 
 router.get('/login', authController.getLogin)

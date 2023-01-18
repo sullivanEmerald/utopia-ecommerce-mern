@@ -16,5 +16,6 @@ router.delete('/deleteUser/:id', ensureAdmin, adminControl.deleteUser)
 router.get('/view/admin', ensureAdmin, adminControl.viewAdmin)
 router.put('/removeAdmin/:id', ensureAdmin, adminControl.removeAdmin)
 router.get('/view/orders', ensureAdmin, adminControl.getOrders)
+router.post('/pending/:id', ensureAdmin, adminControl.sendStatus)
 
 module.exports = router

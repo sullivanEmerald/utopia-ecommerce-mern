@@ -56,7 +56,8 @@ module.exports = {
                     cloudinaryId : element.cloudinaryId,
                     likes : element.likes,
                     quantity : 1,
-                    userId : req.user.id 
+                    userId : req.user.id,
+                    status : null,
     
                 })
             
@@ -129,6 +130,16 @@ module.exports = {
             const products =  await Product.find().lean()
                 const cartNumber =  await Orders.countDocuments({ userId : req.user.id})
                 res.render('logIndex.ejs', { products : products, title : "Home Page", user : req.user, cartNumber : cartNumber})
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    fetchOrders : async (req, res) => {
+        try {
+            const myOrders =  await Orders.find({ userId : req.user.id})
+            const cart = await Orders.countDocuments({ userId : req.user.id })
+            res.render('track.ejs', { userOrder : myOrders, title : "My Orders", user : req.user, cartNumber : cart})
         } catch (error) {
             console.error(error)
         }

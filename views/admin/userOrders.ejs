@@ -40,9 +40,17 @@
                     <span>Customer Landmark Address : </span><p><%= userAdd.landmark  %></p> 
 
                     <section class="orderButton">
-                        <button class="btn btn-outline-primary">Pending</button>
-                        <button class="btn btn-outline-info">Shipped</button>
-                        <button class="btn btn-outline-danger">Ready for pickup</button>
+                        <form action="/admin/pending/<%= items[i]._id %>?method=PUT" method="POST">
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="floatingInput" name="status">
+                                        <option>Select Tracking Status</option>
+                                        <option value="pending">Pending</option>
+                                        <option value="Shipped">Shipped</option>
+                                        <option value="pickUp">Ready for Pick up</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-outline-danger">Send Tracking status</button>
+                        </form>
                     </section>
                 </section>
             <% } else { %>

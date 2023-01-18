@@ -110,5 +110,16 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
+    },
+
+    sendStatus :  async (req, res) => {
+        try {
+            await Orders.findOneAndUpdate({ _id : req.params.id }, {
+                status : req.body.status
+            })
+            res.redirect('/admin/view/orders')
+        } catch (error) {
+            console.error(error)
+        }
     }
 }   
