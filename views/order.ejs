@@ -2,7 +2,7 @@
 
 <%- include('./partials/loggedUser.ejs') %>
 
-<% const subtotal =  Orders.map(item => item.quantity > 1 ? item.productPrice *= item.quantity : item.productPrice).reduce((acc,c) => acc + c) %>
+<% const subtotal =  Orders.map(item => item.quantity > 1 ? item.productPrice *= item.quantity : item.productPrice).reduce((acc,c) => acc + c, 0) %>
 
 <% if(Orders.length < 1) { %>
 

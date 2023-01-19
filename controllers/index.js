@@ -139,7 +139,9 @@ module.exports = {
         try {
             const myOrders =  await Orders.find({ userId : req.user.id})
             const cart = await Orders.countDocuments({ userId : req.user.id })
-            res.render('track.ejs', { userOrder : myOrders, title : "My Orders", user : req.user, cartNumber : cart})
+            const userAddress =  await Address.find({userId : req.user.id})
+            console.log(userAddress)
+            res.render('track.ejs', { userOrder : myOrders, title : "My Orders", user : req.user, cartNumber : cart, address : userAddress[0]})
         } catch (error) {
             console.error(error)
         }

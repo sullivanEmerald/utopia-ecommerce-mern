@@ -3,8 +3,53 @@
 
 <%- include('./partials/loggedUser.ejs') %>
 
+            
+<% if(userOrder.length < 1) { %>
 
+    <h3 class="errorHeader" id="notUser">Hello <%= user.userName %> , You don't have any Other YET. Kindly, <a href="/">Go to Our Home page </a> to make your order</h3>
+    <button class="errorButton btn btn-outline-info"  onclick="history.back()"> BACK</button>
 
+<% } else { %>
+
+    <% function useComma(price) { %>
+        <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+    <% } %>
+
+    <% userOrder.forEach(item => { %>
+        <section class="orderItems container">
+            <p><%= item.productName %></p>
+            <section class="orderItemsFlex">
+                <img src="<%= item.productImage %>" alt="My Cart">
+                <p><%= item.productDescription %></p>
+    
+                <!-- using method override to update the quality  -->
+                
+    
+                <p><%= item.quantity %></p>
+                
+                
+                 <% if(item.quantity === 1 ) { %>
+                    <p>&dollar;<%= useComma(item.productPrice)  %></p>
+                <% } else { %>
+                    <p>&dollar; <%=  useComma(((item.productPrice) + (item.quantity)) -  item.quantity) %></p>
+                <% } %>
+            </section>
+            <h3 class="text-center text-danger">Item Status:</h3>
+        <% if(item.status === 'pickUp') { %>
+            <p class="text-center"> Your item(s) is ready for pick up at <%= address.address %> and <%=  address.landmark %> as the nearest Landmark</p>
+        <% } else if(item.status === 'pending') { %>
+            <span class="text-center"> Your item(s)  <%= item.productName %> is on pending due to Operational reasons. We will proceed with the shipping immediately the internal criterias are met</span>
+        <% } else if(item.status === 'shipped') { %> 
+            <span class="text-center"> Your item(s)  <%= item.productName %> have been shipped to your location <%= address.address %>, ou will be notified immediately it gets to your location. Keep checking your item status as we update it real-time</span>
+        <% } else { %>
+            <p class="text-center">Your Item is being supervised for shipping. Keeping checking your item status as we update real-txime</p>
+        <% } %>
+            
+        </section>
+    
+    <% }) %>
+
+<% } %>
 
 
 
