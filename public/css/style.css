@@ -26,13 +26,31 @@ hr{
 footer > section, .homeLikes, .navbar, .orderPage, .orderItemsFlex{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    
+    justify-content: space-between;  
 }
 
-footer > section > *{
- margin-right: 30px; 
+/* MEDIA QUERY FOR THE LOGGED IN USER NAV */
+@media screen and (max-width: 480px){
+    .navbar{
+        display: block;
+        
+    }
+
 }
+footer > section > *{
+ margin-right: 30px;
+}
+
+footer > section{
+    justify-content: space-evenly;
+}
+
+footer {
+    background-color: rgb(33, 31, 31);
+    color: #fff;
+    padding: 10px;
+}
+
 
 .homeLike{
     justify-content: space-between;
@@ -51,6 +69,10 @@ footer > section > *{
     margin-left: 20px;
     padding-top: 20px;
    
+}
+
+.homeCard{
+    position: relative;
 }
 
 .homePage .homeCard{
@@ -588,6 +610,40 @@ footer > section > *{
     justify-content: flex-end;
 } 
 
+#addCartButton{
+    position : absolute;
+    display: block;
+    right: 14px;
+    bottom: 14px;
+
+}
+
+.indexSolid {
+    font-size: 25px;
+}
+
+.indexPageButton:hover{
+    color: #fff;
+}
+
+
+footer > section > section > h3{
+    color:#00d084;
+}
 
 
 /* AT MEDIA QUERY FOR MOBILE PHONES (Smaller Screens) */
+
+@media screen and (max-width: 480px){
+    .homePage img{
+        height: 200px;
+        width: 200px;
+        margin: 5px auto;
+    }
+
+    footer > section{
+        flex-direction: column;
+        padding: 10px;
+
+    }
+}
