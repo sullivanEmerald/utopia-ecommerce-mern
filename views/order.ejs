@@ -25,20 +25,20 @@
             <section class="orderItems">
                 <p><%= item.productName %></p>
                 <section class="orderItemsFlex">
-                    <img src="<%= item.productImage %>" alt="My Cart">
-                    <p><%= item.productDescription %></p>
+                    <img src="<%= item.productImage %>" alt="My Cart" id="orderImage">
+                        <p><%= item.productDescription %></p>
 
                     <!-- using method override to update the quality  -->
-                    <form action="/order/minus/<%= item._id %>?method=PUT" method="POST">
-                        <button type="submit"><i class="fa-solid fa-minus"></i></button>
-                    </form>
-
-                    <p><%= item.quantity %></p>
-
-                    <form action="/order/plus/<%= item._id %>?method=PUT" method="POST">
-                    <button><i class="fa-solid fa-plus"></i></button>
-                    </form>
                     
+                        <form action="/order/minus/<%= item._id %>?method=PUT" method="POST">
+                            <button type="submit"><i class="fa-solid fa-minus addButtonOrder" ></i></button>
+                        </form>
+
+                        <p><%= item.quantity %></p>
+
+                        <form action="/order/plus/<%= item._id %>?method=PUT" method="POST">
+                        <button type="submit" class="incButton"><i class="fa-solid fa-plus addButtonOrder" ></i></button>
+                        </form>
                     
                      <% if(item.quantity === 1 ) { %>
                         <p>&dollar;<%= useComma(item.productPrice)  %></p>
@@ -50,7 +50,7 @@
 
                 </section>
                 <form action="/order/remove/<%= item._id %>?method=DELETE" method="POST">
-                    <button type="submit" class="btn btn-outline-info">DELETE</button>
+                    <button type="submit" class="btn btn-outline-info deleteOrder">DELETE</button>
                 </form>
                 
             </section>
