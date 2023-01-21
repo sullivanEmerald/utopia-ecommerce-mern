@@ -88,7 +88,7 @@
                 <% } %>
         </section>
 
-        <a href="/checkout/payment/review/<%= subtotal %>" class="confirmOrder">Confirm Order</a>
+            <a href="/checkout/payment/review/<%= subtotal %>" class="confirmOrder">Confirm Order</a>
        
         </section>
 
@@ -106,12 +106,8 @@
                 </section>
                 <hr class="orderHr">
             <% } %>
-
-            
-            
-            <% console.log(subtotal) %>
             <p class="text-center userSubtotal">Subtotal :  &dollar;<%=useComma(subtotal) %> </p>
-            <p class="userCongras">Congratulations, <span class="userGift"><%= user.userName %></span> you are on a free shipping</p>
+            <p class="userCongras">Congratulations, <span class="userGift"><%= user.userName %></span> you are on shipping discount</p>
         </section>
     </section>
     
