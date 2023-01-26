@@ -601,7 +601,7 @@ footer {
 
 .paymentReview{
     margin: 20px auto;
-    width: 50%;
+    width: 95%;
 }
 
 .paymentReview > section{
@@ -616,7 +616,6 @@ footer {
     display: flex;
     justify-content: space-between;
 }
-
 
 .discount{
     display: inline-block;
@@ -637,6 +636,7 @@ footer {
 #payText{
     font-weight: bold;
     color: cornflowerblue;
+    font-size: 20px;
     
 }
 
@@ -644,6 +644,26 @@ footer {
     margin: 5px auto;
     display: block;
 }
+
+.paymentReview > p{
+    color: cornflowerblue;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+}
+
+
+@media screen and (max-width: 480px){
+    .paymentReview > section{
+        width: 100%;
+    }
+
+    .paymentAside, .totalPay{
+        justify-content: space-around;
+
+    }
+}
+
 
 
 /* *
