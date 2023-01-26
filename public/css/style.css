@@ -295,12 +295,24 @@ footer {
 
 /* REVIEW ROUTE STYLING */
 
-.userAddressFirst, .addressSection, .orderSummaryItem{
+.userAddressFirst, .addressSection, .orderSummaryItem, .shippingDetails {
     display: flex;
     flex-wrap:wrap;
     justify-content: space-evenly;
     position: relative;
     
+}
+
+.shippingDetails{
+    justify-content: space-around;
+
+}
+
+@media screen and (max-width: 480px){
+    .shippingDetails {
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
 .orderSummaryItem{
@@ -321,6 +333,7 @@ footer {
     border-radius: 10px 12px 17px 20px;
     box-shadow: 3px 3px 5px 6px #ccc;
     position : relative;
+    margin-bottom: 30px;
 
 }
 .orderSection>  h3{
@@ -371,10 +384,10 @@ footer {
 
 .addressSection{
     color: black;
-    border: 2px solid #00d084;
     border-radius: 10px;
     padding: 15px;
-    /* justify-content: space-between; */
+    border-radius: 10px 12px 17px 20px;
+    box-shadow: 3px 3px 5px 6px #ccc;
     margin-bottom: 30px;
 }
 
@@ -414,6 +427,12 @@ footer {
     margin-left: -80px;
 }
 
+.userAddress *{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    font-size: 17px;   
+}
+
 @media screen and (max-width: 480px){
     .userAddressFirst{
         flex-direction: column-reverse;
@@ -443,7 +462,20 @@ footer {
     .editUser{
         width: 70%;
     }
+
+    .creditImage{
+        width: 100%;
+    }
     
+    .addressSection{
+        width: 110%;
+        margin-left: -20px;
+
+    }
+
+    .orderSection{
+        margin-bottom: 20px;
+    }
 }
 
 
@@ -452,10 +484,23 @@ footer {
 
 
 .paymentMethod{
-    border: 2px solid #00d084;
-    font-size: 20px;
-    border-radius: 10px;
+    font-size: 17px;
     padding: 15px;
+    border-radius: 10px 12px 17px 20px;
+    box-shadow: 3px 3px 5px 6px #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+    .paymentIns > h5{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left; 
+    font-size: 17px;
+}
+
+.submitPayment{
+    margin-bottom: 10px;
+
 }
 
 .paymentMethod button{
@@ -485,12 +530,11 @@ footer {
 }
 
 .shippingSummary{
-    border: 2px solid #00d084;
-    border-radius: 10px;
     margin-top: 30px;
     padding: 10px;
-    color: blueviolet;
     font-size: 18px;
+    border-radius: 10px 12px 17px 20px;
+    box-shadow: 3px 3px 5px 6px #ccc;
     
 }
 
@@ -499,8 +543,6 @@ footer {
     font-size: 20px;
     
 }
-
-
 
 /* for the Review Nav */
 
@@ -528,23 +570,23 @@ footer {
 }
 
 .confirmOrder{
-    display: inline-block;
+    display: block;
     padding: 10px;
     background-color: #093d2a;
     color: #00d084;
     border-radius: 10px;
     text-decoration: none;
-    margin-top: 10px;
-    position: absolute;
-    right: 39%;
-
+    text-align: center;
+    margin: 25px auto;
+    font-family: 'Orbitron', sans-serif;
+    
 }
 
 .confirmOrder:hover{
     background-color: white;
     color: #093d2a;
     border: 2px solid #00d084;
-   transition: 1s; 
+    transition: 1s; 
    
     
 }

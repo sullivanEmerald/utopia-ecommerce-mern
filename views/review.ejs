@@ -35,7 +35,7 @@
                             <option value="Credit Card">Credit Card</option>
                         </select>
                     </div>
-                    <button type="submit">ADD DELIVERY METHOD</button>
+                    <button type="submit">Add Delivey Method</button>
                 </form>
                 <% if(address.paymentMethod === 'Pay On Delivery' ) { %>
                     <section>
@@ -47,12 +47,12 @@
                         <p>You Will make the necessary payment corresponding to the amount on the system. Make sure you sign on the agent slip that the product was highly untouched on arriving. Endeaour to open and check your products in the presence of your agent.</p>
                     </section>
                 <% } else if(address.paymentMethod === 'Pick Up Station') { %>
-                    <section>
-                        <h5> You have selected <span class="displayPayment"><%= address.paymentMethod %> </span>as you Preffered Delivery option</h5><br>
+                    <section class="payment">
+                        <h5> You have selected <span class="displayPayment"><%= address.paymentMethod.trim() %> </span>as you Preffered Delivery option</h5><br>
                         <form action="/checkout/review/station/<%= address._id %>" method="POST">
                             <div class="form-floating mb-3">
                                 <select class="form-select" id="floatingInput" name="pickStation">
-                                    <option>Select Location Nearest to You</option>
+                                    <option>Select Nearest Location</option>
                                     <option value="Africa">Africa</option>
                                     <option value="North America">North America</option>
                                     <option value="England">England</option>
@@ -61,7 +61,7 @@
                                     <option value="Asia">Asia</option>
                                 </select>
                             </div>
-                            <button type="submit">Submit Location</button>
+                            <button type="submit" class="submitPayment">Submit Location</button>
                         </form>
                         <p>Plese be informed that at this early stage of our company you can select your location base on Continient and our heads in each will call you and or email you how it will be brought closer to you in your country and state. Just follow instructions.</p>
 
@@ -71,22 +71,22 @@
                     </section>
 
                 <% } else { %>
-                    <img src="/images/creditCard.png" data-bs-toggle="modal" data-bs-target="#creditCard" alt="Credit Card">
+                    <img src="/images/creditCard.png" class="creditImage" data-bs-toggle="modal" data-bs-target="#creditCard" alt="Credit Card">
                 <% } %>
             </section>
 
             <!-- summary section -->
             <section class="shippingSummary">
                 <h4 class="text-center centeredHeaders">Shipping Summary</h4>
-                <p>NAME :  <%= user.userName %></p>
-                <p>ADDRESS :  <%= address.address %></p>
-                <p>PHONE NUMBER : <%= address.phoneNo %></p>
+                <p>Name :  <%= user.userName %></p>
+                <p>Address :  <%= address.address %></p>
+                <p>Phone No: <%= address.phoneNo %></p>
                 <% if(address.paymentMethod === 'Pick Up Station' ) { %>
-                <address>PICK UP STATION :  <%= address.pickUp %> </address> 
+                <p>Pick Up Station:  <%= address.pickUp %> </p> 
                 <% } else { %>
-                <address>DELIVERY METHOD :  <%= address.paymentMethod %></address>
+                <p>Delivery Method :  <%= address.paymentMethod %></p>
                 <% } %>
-        </section>
+            </section>
 
             <a href="/checkout/payment/review/<%= subtotal %>" class="confirmOrder">Confirm Order</a>
        
