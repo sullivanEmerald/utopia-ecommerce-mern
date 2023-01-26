@@ -6,7 +6,7 @@
     <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
 <% } %>
 
-<% const subtotal =  orders.map(item => item.quantity > 1 ? item.productPrice *= item.quantity : item.productPrice).reduce((acc,c) => acc + c) %>
+<% const subtotal =  orders.map(item => item.quantity > 1 ? item.productPrice *= item.quantity : item.productPrice).reduce((acc,c) => acc + c , 0) %>
 
 <main class="userAddress">
     <section class="userAddressFirst">
@@ -14,11 +14,11 @@
             <section class="addressSection">
                 <p>Shipping Address</p>
                 <section>
-                    <p class="users"><%= user.userName %></p>
-                    <p class="users"><%= user.email %></p>
-                    <p><%= address.address %></p>
-                    <p><%= address.phoneNo %></p>
-                    <p><%= address.landmark %></p>
+                    <span> Name : </span><p class="users"><%= user.userName %></p>
+                    <span> Email :</span><p class="users"><%= user.email.toLowerCase() %></p>
+                    <span> Address :</span><p><%= address.address %></p>
+                    <span> Phone No :</span><p><%= address.phoneNo %></p>
+                    <span> Landmark :</span><p><%= address.landmark %></p>
                 </section>
                 <button type="button"  data-bs-toggle="modal" data-bs-target="#myModal">Edit Address</button>
             </section>
@@ -92,6 +92,7 @@
        
         </section>
 
+        <% const lastOrder = orders[orders.length - 1] %>
         <section class="orderSection">
             <h3 class="text-center">Cart Summary</h3>
             <hr>
@@ -104,7 +105,11 @@
                         <p> Qty : <%= orders[i].quantity %></p>
                     </section>
                 </section>
-                <hr class="orderHr">
+                <% if(lastOrder.productId.toString() === orders[i].productId.toString()) { %>
+                    <hr class="lastOrderHr">
+                <% } else { %>
+                    <hr class="orderHr">
+                <% } %>
             <% } %>
             <p class="text-center userSubtotal">Subtotal :  &dollar;<%=useComma(subtotal) %> </p>
             <p class="userCongras">Congratulations, <span class="userGift"><%= user.userName %></span> you are on shipping discount</p>
@@ -129,7 +134,7 @@
         <div class="modal-body">
             <main class="container">
                 <div class="row justify-content-center">
-                    <section class="col-6 mt-5">
+                    <section>
                         <% if (locals.messages.errors) { %>
                             <% messages.errors.forEach( el => { %>
                                 <div class="alert alert-danger"><%= el.msg %></div>
@@ -142,19 +147,18 @@
                         <% } %>
             
                         <form action="/checkout/review/edit/<%= address._id%>" method="POST">
-                              <div class="form-floating mb-3">
-                                <textarea name="address" id="diaryBody" cols="30" rows="10" class="form-control" placeholder="Address">
-                                    <%= address.address %>
-                                </textarea>
-                                <label for="diaryBody">Address of the User</label>
+                              
+                              <div class="form-floating mb-3" class="editUser">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="Phone Number" name="address" value="<%= address.address.trim() %>" >
+                                <label for="floatingInput">Address Of the User</label>
                               </div>
             
-                              <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="Phone Number" name="phoneNumber" value="<%= address.phoneNo %>">
+                              <div class="form-floating mb-3" class="editUser">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="Phone Number" name="phoneNumber" value="<%= address.phoneNo %>" >
                                 <label for="floatingInput">Phone Number</label>
                               </div>
             
-                              <div class="form-floating mb-3">
+                              <div class="form-floating mb-3" class="editUser">
                                 <input type="text" class="form-control" id="floatingInput" placeholder="Land Mark" name="landMark" value="<%= address.landmark %>">
                                 <label for="floatingInput">LandMark</label>
                               </div>

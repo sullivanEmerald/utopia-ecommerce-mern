@@ -370,12 +370,16 @@ footer {
 }
 
 .addressSection{
-    color: #19d68b ;
+    color: black;
     border: 2px solid #00d084;
     border-radius: 10px;
     padding: 15px;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     margin-bottom: 30px;
+}
+
+.addressSection  span{
+    color: #00d084;
 }
 
 .flexSection button{
@@ -401,6 +405,15 @@ footer {
     font-size: 20px;
 }
 
+.lastOrderHr{
+    display: none;
+}
+
+.userSubtotal{
+    display: inline-block;
+    margin-left: -80px;
+}
+
 @media screen and (max-width: 480px){
     .userAddressFirst{
         flex-direction: column-reverse;
@@ -417,9 +430,20 @@ footer {
     }
 
     .userSubtotal{
-        left: 0;
-        
+        display: inline-block;
+        margin-left: -100px;
     }
+
+    .modal-dialog{
+        max-width: 350px;
+        margin: 20px auto;
+      
+    }
+    
+    .editUser{
+        width: 70%;
+    }
+    
 }
 
 
