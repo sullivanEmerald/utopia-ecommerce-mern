@@ -1,0 +1,63 @@
+<%- include('../partials/admin/header.ejs') %>
+
+<%- include('../partials/admin/nav.ejs') %>
+
+<section class="editSection">
+    <img src="<%= getProduct.productImage %>" alt="">
+    <main class="">
+        <div class="row">
+            <section class="">
+                <% if (locals.messages.errors) { %>
+                    <% messages.errors.forEach( el => { %>
+                        <div class="alert alert-danger"><%= el.msg %></div>
+                    <% }) %>    
+                <% } %>
+                <% if (locals.messages.info) { %>
+                    <% messages.info.forEach( el => { %>
+                        <div class="alert alert-info"><%= el.msg %></div>
+                    <% }) %>    
+                <% } %>
+
+                <form action="/admin/edit/product/<%= getProduct._id %>" method="POST">
+                    
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Name of Product" name="name" value="<%= getProduct.productName %>">
+                        <label for="floatingInput">Name</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Description of Product" name="description" value="<%= getProduct.productDescription %>">
+                        <label for="floatingInput">Description</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" id="floatingInput" placeholder="Price of Producgt" name="price" value="<%= getProduct.productPrice%>">
+                        <label for="floatingInput">Price</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingInput" name="productCategory">
+                            <option>Select Product Category</option>
+                            <option value="Funitures">Funitures</option>
+                            <option value="Shoes">Shoes</option>
+                            <option value="Phone">Phone</option>
+                            <option value="Cloths">Cloths</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Utensils">Utensils</option>
+                        </select>
+                        
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary">Edit Product</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+</section>
+
+
+
+
+
+
+<%- include('../partials/admin/footer.ejs') %>

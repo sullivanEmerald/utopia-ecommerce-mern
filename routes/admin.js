@@ -18,5 +18,6 @@ router.put('/removeAdmin/:id', ensureAdmin, adminControl.removeAdmin)
 router.get('/view/orders', ensureAdmin, adminControl.getOrders)
 router.post('/pending/:id', ensureAdmin, adminControl.sendStatus)
 router.get('/product/edit/:id', ensureAdmin, adminControl.editProduct)
+router.post('/edit/product/:id', adminControl.saveEdit)
 
 module.exports = router

@@ -135,5 +135,21 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
+    },
+
+    saveEdit : async (req, res) => {
+        console.log(req.params.id)
+        try {
+            await Product.findByIdAndUpdate(req.params.id, {
+                productName : req.body.name,
+                productDescription : req.body.description,
+                productPrice : req.body.price,
+                productCategory : req.body.productCategory
+            })
+            console.log('updated')
+            res.redirect('/admin')
+        } catch (error) {
+            console.error(error)
+        }
     }
 }   

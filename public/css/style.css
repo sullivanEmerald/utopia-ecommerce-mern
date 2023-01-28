@@ -864,6 +864,44 @@ footer > section > section > h3{
 
 /* minus button on orders disable styling */
 
-.notShow{
-    color: crimson;
+.editSection{
+    display: flex;
+    justify-content: space-around;
+    flex-basis: 50%;
 }
+
+.editSection button{
+    margin-bottom: 29.5%;
+}
+
+.editSection > main{
+    flex-basis: 50%;
+    margin-top:30px;
+}
+.editSection > img{
+    height: 400px;
+    width: 400px;
+}
+
+@media screen and (max-width: 480px){
+    .editSection{
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .editSection > img{
+        height: 250px;
+        width: 250px;
+    }
+
+    .editSection  form > div{
+       width: 90%;
+       margin: auto;
+       
+    }
+
+    .editSection button{
+        margin-left: 5%;
+    }
+
+}
+
