@@ -19,7 +19,7 @@
         <div class="row">
           <% for(let i = 0; i < products.length;  i++) { %>
           <div class="col-md-4">
-            <div class="card homeCard" style="width:400px">
+            <div class="card homeCard" style="width:350px">
               <img class="card-img-top" src="<%= products[i].productImage %>" alt="Card image">
               <div class="card-body">
                 <h4 class="card-title"><%= products[i].productName %></h4>
@@ -28,9 +28,9 @@
                 <section>
                   <p class="card-text">Likes : <%= products[i].likes %></p>
 
-                  <a href="/admin/product/edit/<%= products[i]._id %>" class="">EDIT</a>
+                  <a href="/admin/product/edit/<%= products[i]._id %>" class="btn btn-outline-info">EDIT</a>
 
-                  <form action="/editLike/<%= products[i]._id %>?method=PUT" method="POST">
+                  <form action="/editLike/<%= products[i]._id %>?method=DELETE" method="POST">
                     <button type="submit" class="btn btn-outline-info indexPageButton" >DELETE</button>
                   </form>
 

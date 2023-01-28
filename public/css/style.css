@@ -883,6 +883,11 @@ footer > section > section > h3{
     width: 400px;
 }
 
+footer > p{
+    text-align: center;
+    line-height: 1;
+}
+
 @media screen and (max-width: 480px){
     .editSection{
         flex-direction: column;
@@ -905,3 +910,7 @@ footer > section > section > h3{
 
 }
 
+
+button.navbar-toggler.adminNaVButton{
+    background-color: #00d084;
+}
