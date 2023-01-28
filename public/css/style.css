@@ -151,7 +151,13 @@ footer {
 }
 
 
+.loginButton{
+    margin-bottom: 20px;
+}
 
+.loginButton:hover{
+    color: #fff;
+}
 
 /* Preview Order Page Media  Query */
 
@@ -853,4 +859,11 @@ footer > section > section > h3{
         padding: 10px;
 
     }
+}
+
+
+/* minus button on orders disable styling */
+
+.notShow{
+    color: crimson;
 }

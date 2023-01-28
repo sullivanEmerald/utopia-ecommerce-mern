@@ -7,7 +7,12 @@ const userAddress =  require('../model/info')
 
 module.exports = {
     getIndex : async (req, res) => {
-        res.render('admin/index.ejs', { title : "Admin Page"})
+        try {
+            const products = await Product.find().sort({createdAt : -1}).lean()
+            res.render('admin/index.ejs', { title : "Admin Page", products  : products})
+        } catch (error) {
+            console.error(error)
+        }
     },
 
     createProductForm : async (req, res) => {
@@ -103,7 +108,7 @@ module.exports = {
 
     getOrders  : async (req, res) => {
         try {
-            const userOrders =  await Orders.find().sort({createdAt : -1}).lean()
+            const userOrders =  await Orders.find({ showAdmin : false}).sort({createdAt : -1}).lean()
             const userInfo = await userAddress.find().lean()
             const users =  await Users.find().lean()
             res.render('admin/userOrders.ejs', { title : 'User Orders', items : userOrders, info : userInfo, users})
@@ -118,6 +123,15 @@ module.exports = {
                 status : req.body.status
             })
             res.redirect('/admin/view/orders')
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    editProduct : async (req, res) => {
+        try {
+            const getProduct = await Product.findById(req.params.id)
+            res.render('admin/editProduct.ejs', { title : 'Edit Product', getProduct : getProduct})
         } catch (error) {
             console.error(error)
         }

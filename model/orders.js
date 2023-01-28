@@ -53,6 +53,11 @@ const OrderSchema =  new mongoose.Schema({
         default : null,
     },
 
+     showAdmin: {
+        type : Boolean,
+        required :  true,
+    },
+
     createdAt  : { 
         type : Date,
         default : Date.now,

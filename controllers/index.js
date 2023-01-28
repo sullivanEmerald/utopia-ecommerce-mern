@@ -58,6 +58,7 @@ module.exports = {
                     quantity : 1,
                     userId : req.user.id,
                     status : null,
+                    showAdmin : false,
     
                 })
             
