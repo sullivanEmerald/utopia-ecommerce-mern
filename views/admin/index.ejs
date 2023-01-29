@@ -6,7 +6,7 @@
     <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
   <% } %>
 
-<h2>Welcome to Administrator Control Room</h2>
+<h2 class="adminWelcome">Welcome to Administrator Control Room</h2>
 
 
 <% if(products.length < 1) { %>
@@ -31,7 +31,7 @@
                   <a href="/admin/product/edit/<%= products[i]._id %>" class="btn btn-outline-info">EDIT</a>
 
                   <form action="/admin/delete/product/<%= products[i]._id %>?_method=DELETE" method="POST">
-                    <button type="submit" class="btn btn-outline-info indexPageButton" >DELETE</button>
+                    <button type="submit" class="btn btn-outline-info indexPageButton admindeleteButton" >DELETE</button>
                   </form>
 
                 </section>

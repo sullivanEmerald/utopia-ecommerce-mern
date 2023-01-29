@@ -731,6 +731,13 @@ footer {
 
 #adminNav * li > a {
     color:crimson;
+    font-family: 'Oswald', sans-serif;
+
+}
+
+#adminNav .navbar-brand{
+    color:crimson;
+    font-family: 'Oswald', sans-serif;
 }
 
 #adminNav * li > a:hover{
@@ -912,5 +919,19 @@ footer > p{
 
 
 button.navbar-toggler.adminNaVButton{
-    background-color: #00d084;
+    background-color: crimson;
+}
+
+
+.admindeleteButton{
+    transform: translate(240px, -37px);
+}
+
+.adminWelcome{
+    text-align: center;
+    margin-top: 20px;
+    color: #093d2a;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+    
 }

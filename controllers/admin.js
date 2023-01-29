@@ -108,7 +108,7 @@ module.exports = {
 
     getOrders  : async (req, res) => {
         try {
-            const userOrders =  await Orders.find({ showAdmin : false}).sort({createdAt : -1}).lean()
+            const userOrders =  await Orders.find({ showAdmin : true}).sort({createdAt : -1}).lean()
             const userInfo = await userAddress.find().lean()
             const users =  await Users.find().lean()
             res.render('admin/userOrders.ejs', { title : 'User Orders', items : userOrders, info : userInfo, users})

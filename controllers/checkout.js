@@ -95,6 +95,20 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
+    },
+
+    showAdmin : async (req, res) => {
+        try {
+            await Orders.updateMany({ userId : req.user.id}, {
+                $set : {
+                    showAdmin : true
+                }
+            })
+            console.log('show all to the admin')
+            res.redirect('/')
+        } catch (error) {
+            console.error(error)
+        }
     }
 
 }   
