@@ -151,5 +151,19 @@ module.exports = {
         } catch (error) {
             console.error(error)
         }
+    },
+
+    deleteProduct :  async (req, res) => {
+        console.log(req.params.id)
+        try {
+            let product =  await Product.findById(req.params.id)
+            await Orders.deleteMany({ productId : req.params.id})
+            await cloudinary.uploader.destroy(product.cloudinaryId)
+            await Product.remove({ _id : req.params.id})
+            console.log('deleted')
+            res.redirect('/admin')
+        } catch (error) {
+            console.error(error)
+        }
     }
 }   
