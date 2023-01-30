@@ -57,6 +57,11 @@ footer {
 }
 
 
+.homePage{
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
 .homePage img{
     width: 230px;
     height:230px;
@@ -64,6 +69,14 @@ footer {
     padding-top: 20px;
     border-radius: 20px;
    
+}
+
+.homePage > h2 {
+    border-left: 2px crimson solid;
+    padding-left: 10px;
+    font-family: 'Oswald', sans-serif;;
+    font-weight: bold;
+    margin-left: 15px;
 }
 
 .homeCard{
@@ -830,12 +843,22 @@ footer {
     justify-content: flex-end;
 } 
 
-#addCartButton{
+.addCartButton{
     position : absolute;
     display: block;
     right: 14px;
-    bottom: 14px;
+    bottom: 20px;
+}
 
+#saveButton{
+    position:absolute;
+    display: block;
+    right:40%;
+    bottom: 20px;
+}
+
+#saveButton:hover{
+    color: #fff;
 }
 
 .indexSolid {

@@ -9,12 +9,17 @@ const { connect } = require('mongoose')
 module.exports = {
     getIndex : async (req, res) => {
         try {
-            const products =  await Product.find().lean()
+            const electronics =  await Product.find({ productCategory : 'Electronics'}).sort({ createdAt : 1}).lean()
+            const cloths = await Product.find({ productCategory : 'Cloths'}).sort({ createdAt : 1}).lean()
+            const funitures = await Product.find({ productCategory : 'Funitures'}).sort({ createdAt : 1}).lean()
+            const utensils =  await Product.find({ productCategory : 'Utensils'}).sort({ createdAt : 1}).lean()
+            const phone = await Product.find({ productCategory : 'Phone'}).sort({ createdAt : 1}).lean()
+
             if(req.user){
                 const cartNumber =  await Orders.countDocuments({ userId : req.user.id})
-                res.render('index.ejs', { products : products, title : "Home Page", user : req.user, cartNumber : cartNumber})
+                res.render('index.ejs', { electronics : electronics, title : "Home Page", user : req.user, cartNumber : cartNumber, cloths : cloths, funitures : funitures, utensils :  utensils, phone : phone})
             }else{
-                res.render('index.ejs', { products : products, title : "Home Page", user : req.user}) 
+                res.render('index.ejs', { electronics : electronics, title : "Home Page", user : req.user, cloths : cloths, funitures : funitures, utensils :  utensils, phone : phone}) 
             }
             
             
@@ -145,6 +150,21 @@ module.exports = {
             res.render('track.ejs', { userOrder : myOrders, title : "My Orders", user : req.user, cartNumber : cart, address : userAddress[0]})
         } catch (error) {
             console.error(error)
+        }
+    },
+
+    saveItem : async (req, res) => {
+        console.log(req.params.id)
+        try {
+            await Orders.findOneAndUpdate( { _id : req.params.id}, {
+                $set :  {
+                    saveItem : true
+                }
+            })
+            console.log('Save Made')
+            res.redirect('/')
+        } catch (error) {
+            
         }
     }
 }

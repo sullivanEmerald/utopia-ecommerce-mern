@@ -14,32 +14,223 @@
   <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
 <% } %>
 
-
+      
       <main class="container-fluid homePage">
+        <h2>Electronics</h2>
           <div class="row">
-            <% for(let i = 0; i < products.length;  i++) { %>
+            <% for(let i = 0; i < electronics.length;  i++) { %>
             <div class="col-md-4">
               <div class="card homeCard" style="width:350px">
-                <img class="card-img-top" src="<%= products[i].productImage %>" alt="Card image">
+                <img class="card-img-top" src="<%= electronics[i].productImage %>" alt="Card image">
                 <div class="card-body">
-                  <h4 class="card-title"><%= products[i].productName %></h4>
-                  <p class="card-text"><%= products[i].productDescription %></p>
-                  <p class="card-text">&#36;<%= useComma(products[i].productPrice) %></p>
+                  <h4 class="card-title"><%= electronics[i].productName %></h4>
+                  <p class="card-text"><%= electronics[i].productDescription %></p>
+                  <p class="card-text">&#36;<%= useComma(electronics[i].productPrice) %></p>
                   <section>
-                    <p class="card-text">Likes : <%= products[i].likes %></p>
+                    <p class="card-text">Likes : <%= electronics[i].likes %></p>
 
-                    <form action="/editLike/<%= products[i]._id %>?method=PUT" method="POST">
+                    <form action="/editLike/<%= electronics[i]._id %>?method=PUT" method="POST">
                       <button type="submit" class="btn btn-outline-info indexPageButton" ><i class="fa-solid fa-thumbs-up indexSolid"></i></button>
                     </form>
                   </section>
 
                   <% if  (user)  { %>
 
-                    <form action="/addCart/<%= products[i]._id %>" method="POST">
+                    <form action="/addCart/<%= electronics[i]._id %>" method="POST">
 
-                      <button type="submit" class="btn btn-outline-info indexPageButton" id="addCartButton"><i class="fa-solid fa-circle-plus indexSolid"></i></button>
+                      <button type="submit" class="btn btn-outline-info indexPageButton addCartButton" id=""><i class="fa-solid fa-circle-plus indexSolid"></i></button>
 
                     </form>
+
+                    <form action="/save/product/<%= electronics[i].productId %>?_method=PUT" method="POST">
+
+                      <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Save</button>
+
+                    </form> 
+                    
+                    <% } else { %>
+                     
+                      <button type="button" class="btn btn-outline-info indexPageButton" id="addCartButton" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa-solid fa-circle-plus indexSolid"></i></button>
+                    
+                    <% } %>
+                </div>
+              </div>
+            </div>
+            <% } %>
+          </div>
+      </main>
+
+      <main class="container-fluid homePage">
+        <h2>Phones</h2>
+          <div class="row">
+            <% for(let i = 0; i < phone.length;  i++) { %>
+            <div class="col-md-4">
+              <div class="card homeCard" style="width:350px">
+                <img class="card-img-top" src="<%= phone[i].productImage %>" alt="Card image">
+                <div class="card-body">
+                  <h4 class="card-title"><%= phone[i].productName %></h4>
+                  <p class="card-text"><%= phone[i].productDescription %></p>
+                  <p class="card-text">&#36;<%= useComma(phone[i].productPrice) %></p>
+                  <section>
+                    <p class="card-text">Likes : <%= phone[i].likes %></p>
+
+                    <form action="/editLike/<%= phone[i]._id %>?method=PUT" method="POST">
+                      <button type="submit" class="btn btn-outline-info indexPageButton" ><i class="fa-solid fa-thumbs-up indexSolid"></i></button>
+                    </form>
+                  </section>
+
+                  <% if  (user)  { %>
+
+                    <form action="/addCart/<%= phone[i]._id %>" method="POST">
+
+                      <button type="submit" class="btn btn-outline-info indexPageButton addCartButton" id=""><i class="fa-solid fa-circle-plus indexSolid"></i></button>
+
+                    </form>
+
+                    <form action="/save/product/<%= phone[i].productId %>?_method=PUT" method="POST">
+
+                      <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Save</button>
+
+                    </form> 
+                    
+                    <% } else { %>
+                     
+                      <button type="button" class="btn btn-outline-info indexPageButton" id="addCartButton" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa-solid fa-circle-plus indexSolid"></i></button>
+                    
+                    <% } %>
+                </div>
+              </div>
+            </div>
+            <% } %>
+          </div>
+      </main>
+
+
+
+      <main class="container-fluid homePage">
+        <h2>Cloths</h2>
+          <div class="row">
+            <% for(let i = 0; i < cloths.length;  i++) { %>
+            <div class="col-md-4">
+              <div class="card homeCard" style="width:350px">
+                <img class="card-img-top" src="<%= cloths[i].productImage %>" alt="Card image">
+                <div class="card-body">
+                  <h4 class="card-title"><%= cloths[i].productName %></h4>
+                  <p class="card-text"><%= cloths[i].productDescription %></p>
+                  <p class="card-text">&#36;<%= useComma(cloths[i].productPrice) %></p>
+                  <section>
+                    <p class="card-text">Likes : <%= cloths[i].likes %></p>
+
+                    <form action="/editLike/<%= cloths[i]._id %>?method=PUT" method="POST">
+                      <button type="submit" class="btn btn-outline-info indexPageButton" ><i class="fa-solid fa-thumbs-up indexSolid"></i></button>
+                    </form>
+                  </section>
+
+                  <% if  (user)  { %>
+
+                    <form action="/addCart/<%= cloths[i].productId %>" method="POST">
+
+                      <button type="submit" class="btn btn-outline-info indexPageButton addCartButton" id=""><i class="fa-solid fa-circle-plus indexSolid"></i></button>
+
+                    </form>
+
+
+                    <form action="/save/product/<%= cloths[i].productId %>?_method=PUT" method="POST">
+
+                      <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Save</button>
+
+                    </form> 
+                    
+                    <% } else { %>
+                     
+                      <button type="button" class="btn btn-outline-info indexPageButton" id="addCartButton" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa-solid fa-circle-plus indexSolid"></i></button>
+                    
+                    <% } %>
+                </div>
+              </div>
+            </div>
+            <% } %>
+          </div>
+      </main>
+
+      <main class="container-fluid homePage">
+        <h2>Funitures</h2>
+          <div class="row">
+            <% for(let i = 0; i < funitures.length;  i++) { %>
+            <div class="col-md-4">
+              <div class="card homeCard" style="width:350px">
+                <img class="card-img-top" src="<%= funitures[i].productImage %>" alt="Card image">
+                <div class="card-body">
+                  <h4 class="card-title"><%= funitures[i].productName %></h4>
+                  <p class="card-text"><%= funitures[i].productDescription %></p>
+                  <p class="card-text">&#36;<%= useComma(funitures[i].productPrice) %></p>
+                  <section>
+                    <p class="card-text">Likes : <%= funitures[i].likes %></p>
+
+                    <form action="/editLike/<%= funitures[i].productId %>?method=PUT" method="POST">
+                      <button type="submit" class="btn btn-outline-info indexPageButton" ><i class="fa-solid fa-thumbs-up indexSolid"></i></button>
+                    </form>
+                  </section>
+
+                  <% if  (user)  { %>
+
+                    <form action="/addCart/<%= funitures[i]._id %>" method="POST">
+
+                      <button type="submit" class="btn btn-outline-info indexPageButton addCartButton" id=""><i class="fa-solid fa-circle-plus indexSolid"></i></button>
+
+                    </form>
+
+                    <form action="/save/product/<%= funitures[i]._id %>?_method=PUT" method="POST">
+
+                      <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Save</button>
+
+                    </form> 
+                    
+                    <% } else { %>
+                     
+                      <button type="button" class="btn btn-outline-info indexPageButton" id="addCartButton" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa-solid fa-circle-plus indexSolid"></i></button>
+                    
+                    <% } %>
+                </div>
+              </div>
+            </div>
+            <% } %>
+          </div>
+      </main>
+
+
+      <main class="container-fluid homePage">
+        <h2>Kitchen Utensils</h2>
+          <div class="row">
+            <% for(let i = 0; i < utensils.length;  i++) { %>
+            <div class="col-md-4">
+              <div class="card homeCard" style="width:350px">
+                <img class="card-img-top" src="<%= utensils[i].productImage %>" alt="Card image">
+                <div class="card-body">
+                  <h4 class="card-title"><%= utensils[i].productName %></h4>
+                  <p class="card-text"><%= utensils[i].productDescription %></p>
+                  <p class="card-text">&#36;<%= useComma(utensils[i].productPrice) %></p>
+                  <section>
+                    <p class="card-text">Likes : <%= utensils[i].likes %></p>
+
+                    <form action="/editLike/<%= utensils[i]._id %>?method=PUT" method="POST">
+                      <button type="submit" class="btn btn-outline-info indexPageButton" ><i class="fa-solid fa-thumbs-up indexSolid"></i></button>
+                    </form>
+                  </section>
+
+                  <% if  (user)  { %>
+
+                    <form action="/addCart/<%= utensils[i]._id %>" method="POST">
+
+                      <button type="submit" class="btn btn-outline-info indexPageButton addCartButton" id=""><i class="fa-solid fa-circle-plus indexSolid"></i></button>
+
+                    </form>
+
+                    <form action="/save/product/<%= utensils[i]._id %>?_method=PUT" method="POST">
+
+                      <button type="submit" class="btn btn-outline-danger addCartButton" id="saveButton">Save</button>
+
+                    </form> 
                     
                     <% } else { %>
                      
