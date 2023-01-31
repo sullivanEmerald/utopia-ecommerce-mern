@@ -29,7 +29,7 @@
                   <section>
                     <p class="card-text">Likes : <%= electronics[i].likes %></p>
 
-                    <form action="/editLike/<%= electronics[i]._id %>?method=PUT" method="POST">
+                    <form action="/editLike/<%= electronics[i]._id %>?_method=PUT" method="POST">
                       <button type="submit" class="btn btn-outline-info indexPageButton" ><i class="fa-solid fa-thumbs-up indexSolid"></i></button>
                     </form>
                   </section>
@@ -42,7 +42,7 @@
 
                     </form>
 
-                    <form action="/save/product/<%= electronics[i].productId %>?_method=PUT" method="POST">
+                    <form action="/save/product/<%= electronics[i]._id %>" method="POST">
 
                       <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Save</button>
 
@@ -74,7 +74,7 @@
                   <section>
                     <p class="card-text">Likes : <%= phone[i].likes %></p>
 
-                    <form action="/editLike/<%= phone[i]._id %>?method=PUT" method="POST">
+                    <form action="/editLike/<%= phone[i]._id %>?_method=PUT" method="POST">
                       <button type="submit" class="btn btn-outline-info indexPageButton" ><i class="fa-solid fa-thumbs-up indexSolid"></i></button>
                     </form>
                   </section>
@@ -87,7 +87,7 @@
 
                     </form>
 
-                    <form action="/save/product/<%= phone[i].productId %>?_method=PUT" method="POST">
+                    <form action="/save/product/<%= phone[i]._id %>" method="POST">
 
                       <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Save</button>
 
@@ -121,7 +121,7 @@
                   <section>
                     <p class="card-text">Likes : <%= cloths[i].likes %></p>
 
-                    <form action="/editLike/<%= cloths[i]._id %>?method=PUT" method="POST">
+                    <form action="/editLike/<%= cloths[i]._id %>?_method=PUT" method="POST">
                       <button type="submit" class="btn btn-outline-info indexPageButton" ><i class="fa-solid fa-thumbs-up indexSolid"></i></button>
                     </form>
                   </section>
@@ -135,7 +135,7 @@
                     </form>
 
 
-                    <form action="/save/product/<%= cloths[i].productId %>?_method=PUT" method="POST">
+                    <form action="/save/product/<%= cloths[i]._id %>" method="POST">
 
                       <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Save</button>
 
@@ -167,7 +167,7 @@
                   <section>
                     <p class="card-text">Likes : <%= funitures[i].likes %></p>
 
-                    <form action="/editLike/<%= funitures[i].productId %>?method=PUT" method="POST">
+                    <form action="/editLike/<%= funitures[i].productId %>?_method=PUT" method="POST">
                       <button type="submit" class="btn btn-outline-info indexPageButton" ><i class="fa-solid fa-thumbs-up indexSolid"></i></button>
                     </form>
                   </section>
@@ -180,7 +180,7 @@
 
                     </form>
 
-                    <form action="/save/product/<%= funitures[i]._id %>?_method=PUT" method="POST">
+                    <form action="/save/product/<%= funitures[i]._id %>" method="POST">
 
                       <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Save</button>
 
@@ -213,7 +213,7 @@
                   <section>
                     <p class="card-text">Likes : <%= utensils[i].likes %></p>
 
-                    <form action="/editLike/<%= utensils[i]._id %>?method=PUT" method="POST">
+                    <form action="/editLike/<%= utensils[i]._id %>?_method=PUT" method="POST">
                       <button type="submit" class="btn btn-outline-info indexPageButton" ><i class="fa-solid fa-thumbs-up indexSolid"></i></button>
                     </form>
                   </section>
@@ -226,7 +226,7 @@
 
                     </form>
 
-                    <form action="/save/product/<%= utensils[i]._id %>?_method=PUT" method="POST">
+                    <form action="/save/product/<%= utensils[i]._id %>" method="POST">
 
                       <button type="submit" class="btn btn-outline-danger addCartButton" id="saveButton">Save</button>
 

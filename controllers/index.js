@@ -3,8 +3,9 @@ const Product = require('../model/product')
 const Orders = require('../model/orders')
 const cloudinary =  require('../middleware/cloudinary')
 const Address =  require("../model/info")
+const saveOrder = require('../model/save')
 const { connect } = require('mongoose')
-
+ 
 
 module.exports = {
     getIndex : async (req, res) => {
@@ -153,18 +154,30 @@ module.exports = {
         }
     },
 
-    saveItem : async (req, res) => {
-        console.log(req.params.id)
+    createFavourite : async (req, res) => {
         try {
-            await Orders.findOneAndUpdate( { _id : req.params.id}, {
-                $set :  {
-                    saveItem : true
-                }
-            })
-            console.log('Save Made')
+            const favourite = await Product.find({ _id  : req.params.id})
+            const favouritEntity = favourite[0]
+            // const ordererdCart = await Orders.find({ userId : req.user.id, productId : req.params.id})
+            // if(ordererdCart.length > 0){
+            //     await Orders.findOneAndUpdate({userId : req.user.id, productId : favouritEntity._id}, {
+            //         $inc : {quantity : 1}
+            //     })
+
+                    saveOrder.create({
+                    productId : favouritEntity._id,
+                    productName  : favouritEntity.productName,  
+                    productDescription  : favouritEntity.productDescription,
+                    productPrice : favouritEntity.productPrice,
+                    productImage : favouritEntity.productImage,
+                    user : req.user.id,
+    
+                })  
+            console.log('favourite Saved')
             res.redirect('/')
         } catch (error) {
-            
+            console.error(error)
         }
+        
     }
 }
