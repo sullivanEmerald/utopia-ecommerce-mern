@@ -17,6 +17,7 @@ router.get('/order/checkout', indexController.checkout)
 router.get('/logIndex', ensureAuth, indexController.indexCart)
 router.get('/track/orders',indexController.fetchOrders )
 router.post('/save/product/:id', indexController.createFavourite)
+router.get('/view/save', indexController.viewSavedItems)
 
 
 router.get('/login', authController.getLogin)

@@ -1,0 +1,50 @@
+<%- include('./partials/homeHeader.ejs') %>
+
+
+<%- include('./partials/loggedUser.ejs') %>
+
+<% function useComma(price) { %>
+    <% return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') %>
+<% } %>
+           
+<% if(savedItems.length < 1) { %>
+
+    <section class="text-center">
+        <p>You have not made any save yet. Thanks for being here</p>
+        <a href="/" class="btn btn-outline-info btn-lg" style="margin-bottom: 20px;">BACK</a>
+    </section>
+
+<% } else { %>
+        <main class="container-fluid homePage">
+              <div class="row">
+                <% for(let i = 0; i < savedItems.length; i++) { %>
+                <div class="col-md-4">
+                  <div class="card homeCard" style="width:300px">
+                    <img class="card-img-top" src="<%= savedItems[i].productImage %>" alt="Card image">
+                    <div class="card-body">
+                      <h4 class="card-title"><%= savedItems[i].productName %></h4>
+                      <p class="card-text"><%= savedItems[i].productDescription %></p>
+                      <p class="card-text">&#36;<%= useComma(savedItems[i].productPrice) %></p>
+                      
+                        <form action="/addCart/<%= savedItems[i].productId %>" method="POST">
+    
+                          <button type="submit" class="btn btn-outline-info indexPageButton addCartButton" id=""><i class="fa-solid fa-circle-plus indexSolid"></i></button>
+    
+                        </form>
+                    </div>
+                  </div>
+                </div>
+                <% } %>
+              </div>
+          </main>
+
+<% } %>
+
+
+
+
+
+
+
+
+<%- include('./partials/userFooter.ejs') %>

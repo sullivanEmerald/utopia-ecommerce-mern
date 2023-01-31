@@ -134,7 +134,7 @@ module.exports = {
 
     indexCart : async (req, res) => {
         try {
-            const products =  await Product.find().lean()
+                const products =  await Product.find().lean()
                 const cartNumber =  await Orders.countDocuments({ userId : req.user.id})
                 res.render('logIndex.ejs', { products : products, title : "Home Page", user : req.user, cartNumber : cartNumber})
         } catch (error) {
@@ -179,5 +179,15 @@ module.exports = {
             console.error(error)
         }
         
+    },
+
+    viewSavedItems :  async (req, res) => {
+        try {
+            const userSaves =  await saveOrder.find({ user : req.user.id})
+            const cart = await Orders.countDocuments({ userId : req.user.id })
+            res.render('save.ejs', { title : 'Saved Items', savedItems : userSaves, user: req.user, cartNumber : cart})
+        } catch (error) {
+            console.error(error)
+        }
     }
 }
