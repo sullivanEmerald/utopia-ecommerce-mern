@@ -41,12 +41,24 @@
                       <button type="submit" class="btn btn-outline-info indexPageButton addCartButton" id=""><i class="fa-solid fa-circle-plus indexSolid"></i></button>
 
                     </form>
-
+                    <% const savedProducts = savedItems.find(product => product.productId.toString() === electronics[i]._id.toString()) %>
+                    
+                    <% if(savedProducts) { %>
                     <form action="/save/product/<%= electronics[i]._id %>" method="POST">
 
-                      <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Save</button>
+                      <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Unsave</button>
 
                     </form> 
+
+                    <% } else { %>
+
+                      <form action="/save/product/<%= electronics[i]._id %>" method="POST">
+
+                        <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Save</button>
+  
+                      </form> 
+
+                    <% } %>
                     
                     <% } else { %>
                      
@@ -81,17 +93,32 @@
 
                   <% if  (user)  { %>
 
+
                     <form action="/addCart/<%= phone[i]._id %>" method="POST">
 
                       <button type="submit" class="btn btn-outline-info indexPageButton addCartButton" id=""><i class="fa-solid fa-circle-plus indexSolid"></i></button>
 
                     </form>
 
+                    <% const savedProducts = savedItems.find(product => product.productId.toString() === phone[i]._id.toString()) %>
+
+                    <% if(savedProducts) { %>
+
                     <form action="/save/product/<%= phone[i]._id %>" method="POST">
 
-                      <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Save</button>
+                      <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">unsave</button>
 
                     </form> 
+
+                    <% } else { %>
+
+                      <form action="/save/product/<%= phone[i]._id %>" method="POST">
+
+                        <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Save</button>
+  
+                      </form> 
+
+                    <% } %>
                     
                     <% } else { %>
                      
@@ -128,18 +155,30 @@
 
                   <% if  (user)  { %>
 
-                    <form action="/addCart/<%= cloths[i].productId %>" method="POST">
+                    <form action="/addCart/<%= cloths[i]._id %>" method="POST">
 
                       <button type="submit" class="btn btn-outline-info indexPageButton addCartButton" id=""><i class="fa-solid fa-circle-plus indexSolid"></i></button>
 
                     </form>
 
+                    <% const savedProducts = savedItems.find(product => product.productId.toString() === cloths[i]._id.toString()) %>
+
+                    <% if(savedProducts) { %>
 
                     <form action="/save/product/<%= cloths[i]._id %>" method="POST">
 
-                      <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Save</button>
+                      <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Unsave</button>
 
                     </form> 
+
+                    <% } else { %>
+
+                      <form action="/save/product/<%= cloths[i]._id %>" method="POST">
+
+                        <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Save</button>
+  
+                      </form> 
+                    <% } %>
                     
                     <% } else { %>
                      

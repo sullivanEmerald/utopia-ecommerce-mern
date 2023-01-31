@@ -7,7 +7,7 @@ const { ensureAuth} =  require('../middleware/auth')
 
 
 router.get('/', indexController.getIndex)
-router.post('/editLike/:id',  indexController.addLike)
+router.put('/editLike/:id',  indexController.addLike)
 router.post('/addCart/:id',  indexController.addToCart)
 router.get('/cart/orders', indexController.viewOrder)
 router.post('/order/plus/:id', indexController.plusQuality)

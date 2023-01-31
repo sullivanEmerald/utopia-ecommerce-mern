@@ -958,3 +958,19 @@ button.navbar-toggler.adminNaVButton{
     font-family: 'Oswald', sans-serif;
     
 }
+
+
+
+/* view save badge
+**********************************
+*/
+
+.badge.bg-info{
+    transform: translate(145px, -35px);
+    display: inline-block;
+}
+
+
+.viewNav{
+    margin-right: 15px;
+}
