@@ -19,6 +19,7 @@ router.get('/track/orders',indexController.fetchOrders )
 router.post('/save/product/:id', indexController.createFavourite)
 router.get('/view/save', indexController.viewSavedItems)
 router.delete('/delete/product/:id', indexController.deleteSave)
+router.delete('/delete/product/save/:id', indexController.deleteSaveItem)
 
 
 router.get('/login', authController.getLogin)

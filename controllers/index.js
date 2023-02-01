@@ -150,8 +150,8 @@ module.exports = {
             const myOrders =  await Orders.find({ userId : req.user.id})
             const cart = await Orders.countDocuments({ userId : req.user.id })
             const userAddress =  await Address.find({userId : req.user.id})
-            console.log(userAddress)
-            res.render('track.ejs', { userOrder : myOrders, title : "My Orders", user : req.user, cartNumber : cart, address : userAddress[0]})
+            const saveNumbers = await saveOrder.countDocuments({user :  req.user.id})
+            res.render('track.ejs', { userOrder : myOrders, title : "My Orders", user : req.user, cartNumber : cart, address : userAddress[0], savesNo : saveNumbers})
         } catch (error) {
             console.error(error)
         }
@@ -195,10 +195,22 @@ module.exports = {
 
            await saveOrder.findOneAndDelete({ user : req.user.id, productId : req.params.id})
            console.log('save Deleted')
-           res.redirect('/')
-            
+           res.redirect('/') 
         } catch (error) {
             console.error(error)
         }
-    }
+    },
+
+    deleteSaveItem :  async (req, res) => {
+        try {
+
+           await saveOrder.findOneAndDelete({ user : req.user.id, productId : req.params.id})
+           console.log('save Deleted')
+           res.redirect('/view/save') 
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+
 }

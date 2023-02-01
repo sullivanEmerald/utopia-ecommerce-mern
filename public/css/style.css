@@ -176,15 +176,16 @@ footer {
 
 @media screen and (max-width: 480px){
     .orderItems{
-        margin-left: 20%;
         margin-bottom: 25px;
         border-radius: 10px;
         padding: 15px;
+        width: 70%;
     }
 
+
     .orderItemsFlex *{
-        margin-right: 0;
-    }
+      margin-right: 0;
+     } 
 
     #orderImage{
         height: 170px;
@@ -881,13 +882,19 @@ footer > section > section > h3{
     .homePage img{
         height: 200px;
         width: 200px;
-        margin: 5px auto;
+        margin: 10px auto;
     }
 
     footer > section{
         flex-direction: column;
         padding: 10px;
 
+    }
+
+    .orderItemsFlex > img{
+        width: 200px;
+        height: 200px;
+        border-radius: 10px;
     }
 }
 

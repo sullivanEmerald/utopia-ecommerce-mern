@@ -31,6 +31,13 @@
                           <button type="submit" class="btn btn-outline-info indexPageButton addCartButton" id=""><i class="fa-solid fa-circle-plus indexSolid"></i></button>
     
                         </form>
+
+                        <form action="/delete/product/save/<%= savedItems[i].productId %>?_method=DELETE" method="POST">
+    
+                          <button type="submit" class="btn btn-outline-info indexPageButton addCartButton" id="saveButton">Unsave</button>
+    
+                        </form>
+
                     </div>
                   </div>
                 </div>

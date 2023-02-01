@@ -17,15 +17,15 @@
 
     <% userOrder.forEach(item => { %>
         <section class="orderItems container">
-            <p><%= item.productName %></p>
+            <p> Name : <%= item.productName %></p>
             <section class="orderItemsFlex">
                 <img src="<%= item.productImage %>" alt="My Cart">
-                <p><%= item.productDescription %></p>
+                <p> Description : <%= item.productDescription %></p>
     
                 <!-- using method override to update the quality  -->
                 
     
-                <p><%= item.quantity %></p>
+                <p> Quality : <%= item.quantity %></p>
                 
                 
                  <% if(item.quantity === 1 ) { %>
