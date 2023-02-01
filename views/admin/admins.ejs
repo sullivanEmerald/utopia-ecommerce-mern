@@ -10,29 +10,29 @@
 
 <% } else { %>
     <h1 class="userHeader">Utopia Admins</h1>
-    <section class="userSection">
+    <main class="container-fluid homePage">
+        <div class="row">
+            <% admin.forEach(item => { %>
+          <div class="col-md-4">
+            <div class="card homeCard" style="width:350px">
+              <img class="card-img-top " id="adminUserImage" src="<%= item.image %>" alt="Card image">
+              <div class="card-body">
+                <p class="card-title">NAME : <%= item.userName %></p>
+                <p class="card-text"> EMAIL : <%= item.email %></p>
+                <aside class="buttonUser">
+                    <form action="/admin/removeAdmin/<%= item._id %>?_method=PUT" method="POST">
+                       <button type="submit" class="btn btn-outline-info">Remove As Admin</button>
+                   </form>
+               </aside>
 
-    
-    <% admin.forEach(item => { %>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+    </main>
 
-        <section>
-            <p> NAME : <%= item.userName %></p>
-            <p> EMAIL : <%= item.email %></p>
-            <img src="<%= item.image %>" alt="">
 
-            <aside class="buttonUser">
-                 <form action="/admin/removeAdmin/<%= item._id %>?_method=PUT" method="POST">
-                    <button type="submit" class="btn btn-outline-info">Remove As Admin</button>
-                </form>
-            </aside>
-
-            
-            
-        </section>
-
-    <% }) %>
-
-    </section>
 
 <% } %>
 

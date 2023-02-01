@@ -981,3 +981,8 @@ button.navbar-toggler.adminNaVButton{
 .viewNav{
     margin-right: 15px;
 }
+
+
+#adminUserImage{
+    margin: auto;
+}

@@ -8,50 +8,50 @@
     <button class="errorButton btn btn-outline-info"  onclick="history.back()"> BACK</button>
 
 <% } else { %>
+
     <h1 class="userHeader">Utopia Registered Users</h1>
-    <section class="userSection">
-
+    <main class="container-fluid homePage">
+        <div class="row">
+            <% users.forEach(item => { %>
+          <div class="col-md-4">
+            <div class="card homeCard" style="width:350px">
+              <img class="card-img-top " id="adminUserImage" src="<%= item.image %>" alt="Card image">
+              <div class="card-body">
+                <p class="card-title">NAME : <%= item.userName %></p>
+                <p class="card-text"> EMAIL : <%= item.email %></p>
+                <% if(item.adminStatus) { %>
+                    <p> Admin Status :  <%= item.adminStatus %> <i class="fa-solid fa-circle-check userFont "></i>
+                <% } else { %>
+                    <p> Admin Status :  <%= item.adminStatus %> <i class="fa-solid fa-circle-xmark userFont"></i>
     
-    <% users.forEach(item => { %>
-
-        <section>
-            <p> NAME : <%= item.userName %></p>
-            <p> EMAIL : <%= item.email %></p>
-            <img src="<%= item.image %>" alt="">
-            <% if(item.adminStatus) { %>
-                <p> Admin Status :  <%= item.adminStatus %> <i class="fa-solid fa-circle-check userFont "></i>
-            <% } else { %>
-                <p> Admin Status :  <%= item.adminStatus %> <i class="fa-solid fa-circle-xmark userFont"></i>
-
-            <% } %>
-            
-
+                <% } %>
+                
+                 
             <aside class="buttonUser">
-            <%  if( item.adminStatus ) { %>
-                <form action="/admin/updateAdmin/<%= item._id %>?_method=PUT" method="POST">
-                    <button type="submit" class="btn btn-outline-danger">Widthdraw Admin</button>
-                    
-                </form>
-             <% } else { %>
-       
-                <form action="/admin/ReverseAdmin/<%= item._id %>?_method=PUT" method="POST">
-                    <button type="submit" class="btn btn-outline-danger">Make Admin</button>
-                </form>
-       
-            <% } %>
-       
-                <form action="/admin/deleteUser/<%= item._id %>?_method=DELETE" method="POST">
-                    <button type="submit" class="btn btn-outline-info">Delete User</button>
-                </form>
-            </aside>
+                <%  if( item.adminStatus ) { %>
+                    <form action="/admin/updateAdmin/<%= item._id %>?_method=PUT" method="POST">
+                        <button type="submit" class="btn btn-outline-danger">Widthdraw Admin</button>
+                        
+                    </form>
+                 <% } else { %>
+           
+                    <form action="/admin/ReverseAdmin/<%= item._id %>?_method=PUT" method="POST">
+                        <button type="submit" class="btn btn-outline-danger">Make Admin</button>
+                    </form>
+           
+                <% } %>
+           
+                    <form action="/admin/deleteUser/<%= item._id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn btn-outline-info">Delete User</button>
+                    </form>
+                </aside>
 
-            
-            
-        </section>
-
-    <% }) %>
-
-    </section>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+    </main>
 
 <% } %>
 
