@@ -161,11 +161,6 @@ module.exports = {
         try {
             const favourite = await Product.find({ _id  : req.params.id})
             const favouritEntity = favourite[0]
-            // const ordererdCart = await Orders.find({ userId : req.user.id, productId : req.params.id})
-            // if(ordererdCart.length > 0){
-            //     await Orders.findOneAndUpdate({userId : req.user.id, productId : favouritEntity._id}, {
-            //         $inc : {quantity : 1}
-            //     })
 
                     saveOrder.create({
                     productId : favouritEntity._id,
@@ -190,6 +185,18 @@ module.exports = {
             const cart = await Orders.countDocuments({ userId : req.user.id })
             const saveNumbers = await saveOrder.countDocuments({user :  req.user.id})
             res.render('save.ejs', { title : 'Saved Items', savedItems : userSaves, user: req.user, cartNumber : cart, savesNo : saveNumbers})
+        } catch (error) {
+            console.error(error)
+        }
+    },
+
+    deleteSave :  async (req, res) => {
+        try {
+
+           await saveOrder.findOneAndDelete({ user : req.user.id, productId : req.params.id})
+           console.log('save Deleted')
+           res.redirect('/')
+            
         } catch (error) {
             console.error(error)
         }

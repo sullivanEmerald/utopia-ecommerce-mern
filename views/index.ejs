@@ -44,7 +44,7 @@
                     <% const savedProducts = savedItems.find(product => product.productId.toString() === electronics[i]._id.toString()) %>
                     
                     <% if(savedProducts) { %>
-                    <form action="/save/product/<%= electronics[i]._id %>" method="POST">
+                    <form action="/delete/product/<%= electronics[i]._id %>?_method=DELETE" method="POST">
 
                       <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Unsave</button>
 
@@ -219,11 +219,25 @@
 
                     </form>
 
-                    <form action="/save/product/<%= funitures[i]._id %>" method="POST">
+                    <% const savedProducts = savedItems.find(product => product.productId.toString() === funitures[i]._id.toString()) %>
 
-                      <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Save</button>
+                    <% if(savedProducts) { %>
+                      <form action="/save/product/<%= funitures[i]._id %>" method="POST">
 
-                    </form> 
+                        <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Unsave</button>
+  
+                      </form> 
+
+                    <% } else { %>
+
+                      <form action="/save/product/<%= funitures[i]._id %>" method="POST">
+
+                        <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Save</button>
+  
+                      </form> 
+
+                    <% } %>
+
                     
                     <% } else { %>
                      
@@ -265,11 +279,25 @@
 
                     </form>
 
+                    <% const savedProducts = savedItems.find(product => product.productId.toString() === utensils[i]._id.toString()) %>
+
+                    <% if(savedProducts) { %>
+
                     <form action="/save/product/<%= utensils[i]._id %>" method="POST">
 
-                      <button type="submit" class="btn btn-outline-danger addCartButton" id="saveButton">Save</button>
+                      <button type="submit" class="btn btn-outline-danger addCartButton" id="saveButton">UnSave</button>
 
                     </form> 
+
+                    <% } else {%>
+
+                      <form action="/save/product/<%= utensils[i]._id %>" method="POST">
+
+                        <button type="submit" class="btn btn-outline-danger addCartButton" id="saveButton">Save</button>
+  
+                      </form> 
+
+                    <% } %>
                     
                     <% } else { %>
                      
