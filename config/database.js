@@ -7,6 +7,7 @@ const connectDB = async () => {
             useNewUrlParser : true,
             useUnifiedTopology : true
         })
+        console.log(process.env.DB_STRING)
         console.log(`${conn.connection.host}`)
         
     } catch (error) {
