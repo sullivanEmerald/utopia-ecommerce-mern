@@ -12,7 +12,7 @@ const adminRoute  =  require('./routes/admin')
 const checkoutRoute = require('./routes/checkout')
 const product = require('./routes/product')
 
-// connecting my app with the environmetn variables
+// connecting my app with the environment variables
 require('dotenv').config({ path: './config/.env'})
 
 require('./config/passport')(passport)
@@ -41,7 +41,7 @@ app.use(session({
     resave : false,
     saveUninitialized : false,
     store : MongoStore.create({
-        mongoUrl : process.env.DB_STRING,
+        mongoUrl : process.env.DB_STRING
     })
 }))
 
