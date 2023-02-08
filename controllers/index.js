@@ -85,7 +85,8 @@ module.exports = {
         try {
             const userOrders = await Orders.find({ userId : req.user.id}).lean()
             const cartNumber =  await Orders.countDocuments({ userId : req.user.id})
-            res.render('order.ejs', { Orders : userOrders, user : req.user, title : req.user.userName, cartNumber: cartNumber })
+            const saveNumbers = await saveOrder.countDocuments({user :  req.user.id})
+            res.render('order.ejs', { Orders : userOrders, user : req.user, title : req.user.userName, cartNumber: cartNumber , savesNo : saveNumbers})
         } catch (error) {
             console.error(error)
         }
