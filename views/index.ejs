@@ -1,6 +1,6 @@
 <%- include('./partials/homeHeader.ejs') %>
 
-<% if  (user) { %>
+<% if (user) { %>
 
 <%- include('./partials/loggedUser.ejs') %>
 
@@ -32,6 +32,13 @@
                     <form action="/editLike/<%= electronics[i]._id %>?_method=PUT" method="POST">
                       <button type="submit" class="btn btn-outline-info indexPageButton" ><i class="fa-solid fa-thumbs-up indexSolid"></i></button>
                     </form>
+
+
+                    <form action="/save/product/<%= electronics[i]._id %>" method="POST">
+
+                      <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Save</button>
+
+                    </form> 
                   </section>
 
                   <% if  (user)  { %>
@@ -59,6 +66,7 @@
                       </form> 
 
                     <% } %>
+                     
                     
                     <% } else { %>
                      
@@ -139,7 +147,7 @@
           <div class="row">
             <% for(let i = 0; i < cloths.length;  i++) { %>
             <div class="col-md-4">
-              <div class="card homeCard" style="width:350px">
+              <div class="card homeCard" style="width:370px">
                 <img class="card-img-top" src="<%= cloths[i].productImage %>" alt="Card image">
                 <div class="card-body">
                   <h4 class="card-title"><%= cloths[i].productName %></h4>

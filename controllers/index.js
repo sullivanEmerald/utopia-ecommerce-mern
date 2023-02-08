@@ -15,17 +15,18 @@ module.exports = {
             const funitures = await Product.find({ productCategory : 'Funitures'}).sort({ createdAt : 1}).lean()
             const utensils =  await Product.find({ productCategory : 'Utensils'}).sort({ createdAt : 1}).lean()
             const phone = await Product.find({ productCategory : 'Phone'}).sort({ createdAt : 1}).lean()
-            const saveNumbers = await saveOrder.countDocuments({user :  req.user.id})
-            const savedItems = await saveOrder.find({ user : req.user.id})
+           
             
 
             if(req.user){
+                const saveNumbers = await saveOrder.countDocuments({user :  req.user.id})
+                const savedItems = await saveOrder.find({ user : req.user.id})
                 const cartNumber =  await Orders.countDocuments({ userId : req.user.id})
                 res.render('index.ejs', { electronics : electronics, title : "Home Page", user : req.user, cartNumber : cartNumber, cloths : cloths, funitures : funitures, utensils :  utensils, phone : phone,  savesNo : saveNumbers, savedItems : savedItems})
+
             }else{
-                res.render('index.ejs', { electronics : electronics, title : "Home Page", user : req.user, cloths : cloths, funitures : funitures, utensils :  utensils, phone : phone,  savesNo : saveNumbers}) 
+                res.render('index.ejs', { electronics : electronics, title : "Home Page", user : req.user, cloths : cloths, funitures : funitures, utensils :  utensils, phone : phone}) 
             }
-            
             
         } catch (error) {
             console.error(error)
