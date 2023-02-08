@@ -34,11 +34,6 @@
                     </form>
 
 
-                    <form action="/save/product/<%= electronics[i]._id %>" method="POST">
-
-                      <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton">Save</button>
-
-                    </form> 
                   </section>
 
                   <% if  (user)  { %>
@@ -71,6 +66,14 @@
                     <% } else { %>
                      
                       <button type="button" class="btn btn-outline-info indexPageButton" id="addCartButton" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa-solid fa-circle-plus indexSolid"></i></button>
+                    
+                    <% } %>
+
+                    <% if(!user) { %>
+                      
+
+                        <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton" data-bs-toggle="modal" data-bs-target="#myModal">Save</button>
+  
                     
                     <% } %>
                 </div>
@@ -133,6 +136,14 @@
                       <button type="button" class="btn btn-outline-info indexPageButton" id="addCartButton" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa-solid fa-circle-plus indexSolid"></i></button>
                     
                     <% } %>
+
+                    <% if(!user) { %>
+                      
+
+                      <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton" data-bs-toggle="modal" data-bs-target="#myModal">Save</button>
+
+                  
+                  <% } %>
                 </div>
               </div>
             </div>
@@ -193,6 +204,14 @@
                       <button type="button" class="btn btn-outline-info indexPageButton" id="addCartButton" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa-solid fa-circle-plus indexSolid"></i></button>
                     
                     <% } %>
+
+                    <% if(!user) { %>
+                      
+
+                      <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton" data-bs-toggle="modal" data-bs-target="#myModal">Save</button>
+
+                  
+                  <% } %>
                 </div>
               </div>
             </div>
@@ -252,6 +271,14 @@
                       <button type="button" class="btn btn-outline-info indexPageButton" id="addCartButton" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa-solid fa-circle-plus indexSolid"></i></button>
                     
                     <% } %>
+
+                    <% if(!user) { %>
+                      
+
+                      <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton" data-bs-toggle="modal" data-bs-target="#myModal">Save</button>
+
+                  
+                  <% } %>
                 </div>
               </div>
             </div>
@@ -312,6 +339,14 @@
                       <button type="button" class="btn btn-outline-info indexPageButton" id="addCartButton" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa-solid fa-circle-plus indexSolid"></i></button>
                     
                     <% } %>
+
+                    <% if(!user) { %>
+                      
+
+                      <button type="submit" class="btn btn-outline-danger  addCartButton" id="saveButton" data-bs-toggle="modal" data-bs-target="#myModal">Save</button>
+
+                  
+                  <% } %>
                 </div>
               </div>
             </div>
@@ -332,7 +367,7 @@
       
             <!-- Modal body -->
             <div class="modal-body">
-              <p>Alert!! You must Login to start adding items to the cart....</p>
+              <p>Alert!! You must Login to start adding or Saving items items to the cart....</p>
             </div>
       
             <!-- Modal footer -->
