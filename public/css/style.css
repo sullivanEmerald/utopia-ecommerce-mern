@@ -179,7 +179,13 @@ footer {
         margin-bottom: 25px;
         border-radius: 10px;
         padding: 15px;
-        width: 70%;
+        width: 80%;
+        margin: 40px auto;
+        
+    }
+
+    .orderPage  section.orderData{
+        width: 100%;
     }
 
 
