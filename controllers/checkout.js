@@ -103,9 +103,17 @@ module.exports = {
                 $set : {
                     showAdmin : true
                 }
-            })
+            });
+
+            await Orders.updateMany({ userId :  req.user.id}, {
+                $set :  {
+                     clearCart : false
+                }
+            });
+
             console.log('show all to the admin')
             res.redirect('/')
+
         } catch (error) {
             console.error(error)
         }

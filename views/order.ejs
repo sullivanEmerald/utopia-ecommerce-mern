@@ -30,13 +30,13 @@
 
                     <!-- using method override to update the quality  -->
                     
-                        <form action="/order/minus/<%= item._id %>?method=PUT" method="POST">
+                        <form action="/order/minus/<%= item._id %>?_method=PUT" method="POST">
                             <button type="submit" class='<%= item.quantity <= 1 ? 'notShow' : 'show'%>'><i class='fa-solid fa-minus addButtonOrder' ></i></button>
                         </form>
 
                         <p class="itemQuality"><%= item.quantity %></p>
 
-                        <form action="/order/plus/<%= item._id %>?method=PUT" method="POST">
+                        <form action="/order/plus/<%= item._id %>?_method=PUT" method="POST">
                         <button type="submit" class="incButton"><i class="fa-solid fa-plus addButtonOrder" ></i></button>
                         </form>
                     

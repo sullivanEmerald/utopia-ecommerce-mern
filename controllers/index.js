@@ -21,7 +21,7 @@ module.exports = {
             if(req.user){
                 const saveNumbers = await saveOrder.countDocuments({user :  req.user.id})
                 const savedItems = await saveOrder.find({ user : req.user.id})
-                const cartNumber =  await Orders.countDocuments({ userId : req.user.id})
+                const cartNumber =  await Orders.countDocuments({ userId : req.user.id, clearCart : true})
                 res.render('index.ejs', { electronics : electronics, title : "Home Page", user : req.user, cartNumber : cartNumber, cloths : cloths, funitures : funitures, utensils :  utensils, phone : phone,  savesNo : saveNumbers, savedItems : savedItems})
 
             }else{
@@ -50,12 +50,12 @@ module.exports = {
         try {
             const productDetails = await Product.find({ _id  : req.params.id})
             const element = productDetails[0]
-            const ordererdCart = await Orders.find({ userId : req.user.id, productId : req.params.id})
-            if(ordererdCart.length > 0){
+            const ordererdCart = await Orders.find({ userId : req.user.id, productId : req.params.id, clearCart  : true})
+            console.log(ordererdCart)
+            if(ordererdCart.length > 0 ){
                 await Orders.findOneAndUpdate({userId : req.user.id, productId : element._id}, {
                     $inc : {quantity : 1}
                 })
-
             }else{
                     Orders.create({
                     productId : element._id,
@@ -83,8 +83,8 @@ module.exports = {
 
     viewOrder : async (req, res) => {
         try {
-            const userOrders = await Orders.find({ userId : req.user.id}).lean()
-            const cartNumber =  await Orders.countDocuments({ userId : req.user.id})
+            const userOrders = await Orders.find({ userId : req.user.id , clearCart : true}).lean()
+            const cartNumber =  await Orders.countDocuments({ userId : req.user.id, clearCart : true})
             const saveNumbers = await saveOrder.countDocuments({user :  req.user.id})
             res.render('order.ejs', { Orders : userOrders, user : req.user, title : req.user.userName, cartNumber: cartNumber , savesNo : saveNumbers})
         } catch (error) {
@@ -140,7 +140,7 @@ module.exports = {
     indexCart : async (req, res) => {
         try {
                 const products =  await Product.find().lean()
-                const cartNumber =  await Orders.countDocuments({ userId : req.user.id})
+                const cartNumber =  await Orders.countDocuments({ userId : req.user.id, clearCart : true})
                 res.render('logIndex.ejs', { products : products, title : "Home Page", user : req.user, cartNumber : cartNumber})
         } catch (error) {
             console.error(error)
@@ -150,7 +150,7 @@ module.exports = {
     fetchOrders : async (req, res) => {
         try {
             const myOrders =  await Orders.find({ userId : req.user.id})
-            const cart = await Orders.countDocuments({ userId : req.user.id })
+            const cart = await Orders.countDocuments({ userId : req.user.id, clearCart : true })
             const userAddress =  await Address.find({userId : req.user.id})
             const saveNumbers = await saveOrder.countDocuments({user :  req.user.id})
             res.render('track.ejs', { userOrder : myOrders, title : "My Orders", user : req.user, cartNumber : cart, address : userAddress[0], savesNo : saveNumbers})
@@ -184,7 +184,7 @@ module.exports = {
     viewSavedItems :  async (req, res) => {
         try {
             const userSaves =  await saveOrder.find({ user : req.user.id})
-            const cart = await Orders.countDocuments({ userId : req.user.id })
+            const cart = await Orders.countDocuments({ userId : req.user.id, clearCart : true })
             const saveNumbers = await saveOrder.countDocuments({user :  req.user.id})
             res.render('save.ejs', { title : 'Saved Items', savedItems : userSaves, user: req.user, cartNumber : cart, savesNo : saveNumbers})
         } catch (error) {

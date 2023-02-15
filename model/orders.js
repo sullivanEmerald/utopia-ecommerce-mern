@@ -63,6 +63,11 @@ const OrderSchema =  new mongoose.Schema({
         default : false,
     },
 
+    clearCart: {
+        type : Boolean,
+        default : true,
+    },
+
     createdAt  : { 
         type : Date,
         default : Date.now,
