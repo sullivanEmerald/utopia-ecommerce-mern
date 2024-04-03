@@ -28,13 +28,10 @@
                   <p class="card-text">&#36;<%= useComma(electronics[i].productPrice) %></p>
                   <section>
                     <p class="card-text">Likes : <%= electronics[i].likes %></p>
-
+                  <section class="flex-operations">
                     <form action="/editLike/<%= electronics[i]._id %>?_method=PUT" method="POST">
                       <button type="submit" class="btn btn-outline-info indexPageButton" ><i class="fa-solid fa-thumbs-up indexSolid"></i></button>
                     </form>
-
-
-                  </section>
 
                   <% if  (user)  { %>
 
@@ -43,6 +40,7 @@
                       <button type="submit" class="btn btn-outline-info indexPageButton addCartButton" id=""><i class="fa-solid fa-circle-plus indexSolid"></i></button>
 
                     </form>
+
                     <% const savedProducts = savedItems.find(product => product.productId.toString() === electronics[i]._id.toString()) %>
                     
                     <% if(savedProducts) { %>
@@ -76,6 +74,7 @@
   
                     
                     <% } %>
+                  </section>
                 </div>
               </div>
             </div>
@@ -93,14 +92,14 @@
                 <div class="card-body">
                   <h4 class="card-title"><%= phone[i].productName %></h4>
                   <p class="card-text"><%= phone[i].productDescription %></p>
-                  <p class="card-text">&#36;<%= useComma(phone[i].productPrice) %></p>
-                  <section>
+                  <p class="card-text">&#36;<%= useComma(phone[i].productPrice) %></p>    
                     <p class="card-text">Likes : <%= phone[i].likes %></p>
+
+                    <section class="flex-operations">
 
                     <form action="/editLike/<%= phone[i]._id %>?_method=PUT" method="POST">
                       <button type="submit" class="btn btn-outline-info indexPageButton" ><i class="fa-solid fa-thumbs-up indexSolid"></i></button>
                     </form>
-                  </section>
 
                   <% if  (user)  { %>
 
@@ -144,6 +143,7 @@
 
                   
                   <% } %>
+                  </section>
                 </div>
               </div>
             </div>
@@ -164,15 +164,17 @@
                   <h4 class="card-title"><%= cloths[i].productName %></h4>
                   <p class="card-text"><%= cloths[i].productDescription %></p>
                   <p class="card-text">&#36;<%= useComma(cloths[i].productPrice) %></p>
-                  <section>
+                 
+                    
                     <p class="card-text">Likes : <%= cloths[i].likes %></p>
 
+                    <section class="flex-operations">
                     <form action="/editLike/<%= cloths[i]._id %>?_method=PUT" method="POST">
                       <button type="submit" class="btn btn-outline-info indexPageButton" ><i class="fa-solid fa-thumbs-up indexSolid"></i></button>
                     </form>
-                  </section>
+                 
 
-                  <% if  (user)  { %>
+                  <% if (user)  { %>
 
                     <form action="/addCart/<%= cloths[i]._id %>" method="POST">
 
@@ -212,6 +214,7 @@
 
                   
                   <% } %>
+                  </section>
                 </div>
               </div>
             </div>
@@ -230,13 +233,14 @@
                   <h4 class="card-title"><%= funitures[i].productName %></h4>
                   <p class="card-text"><%= funitures[i].productDescription %></p>
                   <p class="card-text">&#36;<%= useComma(funitures[i].productPrice) %></p>
-                  <section>
+              
+                    
                     <p class="card-text">Likes : <%= funitures[i].likes %></p>
-
+                    <section class="flex-operations">
                     <form action="/editLike/<%= funitures[i].productId %>?_method=PUT" method="POST">
                       <button type="submit" class="btn btn-outline-info indexPageButton" ><i class="fa-solid fa-thumbs-up indexSolid"></i></button>
                     </form>
-                  </section>
+                 
 
                   <% if  (user)  { %>
 
@@ -279,6 +283,7 @@
 
                   
                   <% } %>
+                  </section>
                 </div>
               </div>
             </div>
@@ -298,13 +303,13 @@
                   <h4 class="card-title"><%= utensils[i].productName %></h4>
                   <p class="card-text"><%= utensils[i].productDescription %></p>
                   <p class="card-text">&#36;<%= useComma(utensils[i].productPrice) %></p>
-                  <section>
+               
                     <p class="card-text">Likes : <%= utensils[i].likes %></p>
-
+                    <section class="flex-operations">
                     <form action="/editLike/<%= utensils[i]._id %>?_method=PUT" method="POST">
                       <button type="submit" class="btn btn-outline-info indexPageButton" ><i class="fa-solid fa-thumbs-up indexSolid"></i></button>
                     </form>
-                  </section>
+                
 
                   <% if  (user)  { %>
 
@@ -347,6 +352,7 @@
 
                   
                   <% } %>
+                  </section>
                 </div>
               </div>
             </div>

@@ -63,12 +63,18 @@ footer {
 }
 
 .homePage img{
-    width: 230px;
-    height:230px;
-    margin-left: 20px;
+    width: 150px;
+    height:150px;
+    margin: auto;
     padding-top: 20px;
     border-radius: 20px;
    
+}
+
+.flex-operations{
+    display: flex;
+    justify-items: flex-start;
+    gap: 10px;
 }
 
 .homePage > h2 {
